@@ -1,0 +1,867 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="light">
+<meta name="robots" content="noindex,nofollow">
+<title>Tráfego Setembro 2026 · Grupo SOU</title>
+<meta name="description" content="Acompanhamento diário do tráfego de setembro de 2026.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=&quot;http://www.w3.org/2000/svg&quot; viewBox=&quot;0 0 100 100&quot;%3E%3Ctext y=&quot;.9em&quot; font-size=&quot;90&quot;%3E%F0%9F%93%A1%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<style>
+html{color-scheme:light}
+body{margin:0}
+img{max-width:100%%}
+[hidden]{display:none!important}
+
+  :root{
+    --paper:#e9edf1;
+    --surface:#ffffff;
+    --surface-2:#f4f7f9;
+    --ink:#141d26;
+    --muted:#5a6a78;
+    --faint:#8a97a3;
+    --line:#dae1e8;
+    --line-strong:#c3ced8;
+    --meta:#2b5fd0;
+    --meta-soft:#e5ecfb;
+    --disp:#2f7d5b;
+    --disp-soft:#e2f1ea;
+    --clay:#ad4526;
+    --clay-soft:#fae5de;
+    --teal:#0c6f68;
+    --teal-soft:#dcf0ee;
+    --amber:#8a6410;
+    --amber-soft:#fbeed0;
+    --shadow:0 1px 2px rgba(20,29,38,.06), 0 8px 24px -16px rgba(20,29,38,.28);
+  }
+  *{box-sizing:border-box}
+  body{
+    background:var(--paper);
+    color:var(--ink);
+    font-family:"IBM Plex Sans","Helvetica Neue",Arial,sans-serif;
+    font-size:15px;
+    line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:1120px;margin:0 auto;padding:32px 20px 72px;display:flex;flex-direction:column;gap:28px}
+
+  /* ---------- cabeçalho ---------- */
+  .masthead{display:flex;flex-wrap:wrap;align-items:flex-end;gap:16px 24px;border-bottom:2px solid var(--ink);padding-bottom:16px}
+  .masthead h1{
+    font-family:"Archivo",sans-serif;font-weight:700;font-size:clamp(28px,4.2vw,42px);
+    letter-spacing:-.025em;line-height:1.02;margin:0;text-wrap:balance;
+  }
+  .masthead h1 span{display:block;color:var(--muted);font-weight:500;font-size:.5em;letter-spacing:.04em;text-transform:uppercase;margin-bottom:6px}
+  .stamp{margin-left:auto;text-align:right;font-family:"IBM Plex Mono",monospace;font-size:12px;color:var(--muted);line-height:1.7}
+  .stamp b{color:var(--ink);font-weight:600}
+
+  /* ---------- KPIs ---------- */
+  .kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:14px}
+  .kpi{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:16px 18px;box-shadow:var(--shadow);display:flex;flex-direction:column;gap:2px}
+  .kpi .lbl{font-size:11px;text-transform:uppercase;letter-spacing:.09em;color:var(--muted);font-weight:600}
+  .kpi .val{font-family:"IBM Plex Mono",monospace;font-variant-numeric:tabular-nums;font-size:26px;font-weight:600;letter-spacing:-.02em}
+  .kpi .sub{font-size:12.5px;color:var(--faint)}
+  .kpi.out{border-top:3px solid var(--clay)}
+  .kpi.in{border-top:3px solid var(--teal)}
+  .kpi.ratio{border-top:3px solid var(--ink)}
+  .kpi.ctx{border-top:3px solid var(--line-strong)}
+  .kpi.out .val{color:var(--clay)}
+  .kpi.in .val{color:var(--teal)}
+
+  /* ---------- alerta ---------- */
+  .alert{background:var(--amber-soft);border:1px solid var(--amber);border-left-width:4px;border-radius:8px;padding:14px 18px;display:flex;flex-direction:column;gap:4px}
+  .alert .t{font-family:"Archivo",sans-serif;font-weight:600;font-size:14px;letter-spacing:.01em;color:var(--amber)}
+  .alert p{margin:0;font-size:14px;color:var(--ink)}
+  .alert.ok{background:var(--teal-soft);border-color:var(--teal)}
+  .alert.ok .t{color:var(--teal)}
+
+  /* ---------- blocos de canal ---------- */
+  .channel{background:var(--surface);border:1px solid var(--line);border-radius:12px;overflow:hidden;box-shadow:var(--shadow)}
+  .ch-head{display:flex;flex-wrap:wrap;align-items:baseline;gap:10px 18px;padding:16px 20px;border-bottom:1px solid var(--line)}
+  .ch-head h2{font-family:"Archivo",sans-serif;font-size:19px;font-weight:700;letter-spacing:-.01em;margin:0}
+  .ch-head .desc{font-size:13px;color:var(--muted);flex:1 1 320px}
+  .ch-head .tot{font-family:"IBM Plex Mono",monospace;font-variant-numeric:tabular-nums;font-size:13px;color:var(--muted)}
+  .ch-head .tot b{color:var(--ink);font-weight:600}
+  .channel.meta .ch-head{border-bottom-color:var(--meta);background:var(--meta-soft)}
+  .channel.meta .ch-head h2{color:var(--meta)}
+  .channel.disp .ch-head{border-bottom-color:var(--disp);background:var(--disp-soft)}
+  .channel.disp .ch-head h2{color:var(--disp)}
+
+  /* ---------- tabelas ---------- */
+  .scroll{overflow-x:auto}
+  table{width:100%;border-collapse:collapse;font-size:13.5px}
+  thead th{
+    font-family:"IBM Plex Sans",sans-serif;font-size:10.5px;text-transform:uppercase;letter-spacing:.08em;
+    color:var(--muted);font-weight:600;text-align:right;padding:10px 12px;
+    border-bottom:1px solid var(--line-strong);white-space:nowrap;background:var(--surface-2);
+  }
+  thead th.l{text-align:left}
+  tbody td{padding:9px 12px;border-bottom:1px solid var(--line);text-align:right;white-space:nowrap}
+  tbody td.l{text-align:left;white-space:normal}
+  .num{font-family:"IBM Plex Mono",monospace;font-variant-numeric:tabular-nums;letter-spacing:-.01em}
+  .zero{color:var(--faint)}
+  tr.daybar td{
+    background:var(--surface-2);font-family:"Archivo",sans-serif;font-weight:600;font-size:12px;
+    letter-spacing:.06em;text-transform:uppercase;color:var(--muted);padding:8px 12px;border-bottom:1px solid var(--line-strong);
+  }
+  tr.sub td{background:transparent;font-weight:600;border-bottom:1px solid var(--line-strong)}
+  tr.sub td.l{color:var(--muted);font-size:12px;text-transform:uppercase;letter-spacing:.05em}
+  tr.total td{background:var(--surface-2);font-weight:600;border-bottom:none;border-top:2px solid var(--ink)}
+  tr.total td.l{font-family:"Archivo",sans-serif;letter-spacing:.02em}
+  .camp{font-size:13px;line-height:1.35}
+  .acct{display:inline-block;font-family:"IBM Plex Mono",monospace;font-size:10.5px;letter-spacing:.02em;color:var(--muted);border:1px solid var(--line-strong);border-radius:4px;padding:0 5px;margin-right:7px;vertical-align:1px}
+  .chip{display:inline-block;font-size:10.5px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;border-radius:999px;padding:2px 8px}
+  .chip.warn{background:var(--amber-soft);color:var(--amber)}
+  .chip.good{background:var(--teal-soft);color:var(--teal)}
+  .chip.bad{background:var(--clay-soft);color:var(--clay)}
+  .roas-good{color:var(--teal);font-weight:600}
+  .roas-bad{color:var(--clay);font-weight:600}
+
+  /* ---------- funil ---------- */
+  .funnel{display:grid;grid-template-columns:1fr;gap:2px;padding:18px 20px 6px}
+  .step{display:grid;grid-template-columns:minmax(150px,190px) 1fr minmax(96px,auto);align-items:center;gap:14px;padding:7px 0}
+  .step .name{font-size:13.5px;font-weight:500}
+  .step .name em{display:block;font-style:normal;font-size:11.5px;color:var(--faint)}
+  .bar{height:22px;border-radius:3px;background:var(--disp);position:relative;min-width:3px}
+  .bar.warm{background:var(--amber)}
+  .bar.hot{background:var(--clay)}
+  .bar.win{background:var(--teal)}
+  .step .fig{text-align:right;font-family:"IBM Plex Mono",monospace;font-variant-numeric:tabular-nums;font-size:14px;font-weight:600}
+  .step .fig small{display:block;font-weight:400;font-size:11px;color:var(--faint)}
+  .drop{grid-column:2;font-size:11.5px;color:var(--faint);padding:0 0 2px 2px}
+  .costs{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:1px;background:var(--line);border-top:1px solid var(--line);margin-top:12px}
+  .costs div{background:var(--surface);padding:12px 16px}
+  .costs .c-lbl{font-size:10.5px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);font-weight:600}
+  .costs .c-val{font-family:"IBM Plex Mono",monospace;font-variant-numeric:tabular-nums;font-size:18px;font-weight:600;margin-top:2px}
+  .lede{padding:0 20px 4px;font-size:13.5px;color:var(--muted);max-width:70ch}
+  .lede b{color:var(--ink)}
+
+  /* ---------- meta do mês ---------- */
+  .channel.goal .ch-head{border-bottom-color:var(--ink);background:var(--surface-2)}
+  .goalkpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:1px;background:var(--line);border-bottom:1px solid var(--line)}
+  .goalkpis>div{background:var(--surface);padding:14px 18px}
+  .goalkpis .c-lbl{font-size:10.5px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);font-weight:600}
+  .goalkpis .c-val{font-family:"IBM Plex Mono",monospace;font-variant-numeric:tabular-nums;font-size:21px;font-weight:600;margin-top:2px;letter-spacing:-.02em}
+  .goalkpis .c-sub{font-size:11.5px;color:var(--faint);margin-top:2px}
+  .chartbox{padding:20px 20px 8px;border-bottom:1px solid var(--line)}
+  .chart-t{font-family:"Archivo",sans-serif;font-size:13px;font-weight:600;letter-spacing:.02em}
+  .chart-legend{display:flex;flex-wrap:wrap;gap:6px 18px;margin:6px 0 12px;font-size:11.5px;color:var(--muted)}
+  .chart-legend span{display:flex;align-items:center;gap:6px}
+  .sw{width:13px;height:11px;border-radius:2px;flex:none;display:inline-block}
+  .sw.tgt{background:var(--line-strong)}
+  .sw.half{background:var(--line-strong);opacity:.55}
+  .sw.got{background:var(--teal)}
+  .sw.part{background:var(--teal);opacity:.45}
+  .sw.ln-meta{height:3px;border-radius:0;background:var(--ink)}
+  .sw.ln-real{height:3px;border-radius:0;background:var(--teal)}
+  .sw.ln-pace{height:0;border-top:2px dashed var(--clay);border-radius:0}
+  .sw.ln-ref{height:0;border-top:2px dotted var(--muted);border-radius:0}
+  .goal svg{width:100%;min-width:720px;max-width:100%;height:auto;display:block;overflow:visible}
+  .goal svg .grid{stroke:var(--line);stroke-width:1}
+  .goal svg .base{stroke:var(--line-strong);stroke-width:1.2}
+  .goal svg .ax{fill:var(--faint);font-family:"IBM Plex Mono",monospace;font-size:10px}
+  .goal svg .dl{fill:var(--muted);font-family:"IBM Plex Mono",monospace;font-size:10px}
+  .goal svg .dl.wknd{fill:var(--faint)}
+  .goal svg .dw{fill:var(--faint);font-family:"IBM Plex Sans",sans-serif;font-size:8px;letter-spacing:.04em}
+  .goal svg .tgt{fill:var(--line-strong);opacity:.85}
+  .goal svg .tgt.half{opacity:.5}
+  .goal svg .got{fill:var(--teal)}
+  .goal svg .got.part{fill:var(--teal);opacity:.45}
+  .goal svg .gapfill{fill:var(--clay);opacity:.14}
+  .goal svg .meta{fill:none;stroke:var(--ink);stroke-width:2}
+  .goal svg .realz{fill:none;stroke:var(--teal);stroke-width:2.6}
+  .goal svg .dot{fill:var(--teal)}
+  .goal svg .pace{stroke:var(--clay);stroke-width:1.8;stroke-dasharray:6 5}
+  .goal svg .ref{stroke:var(--muted);stroke-width:1;stroke-dasharray:2 4}
+  .goal svg .mk{stroke:var(--muted);stroke-width:1}
+  .goal svg .mkv{stroke:var(--muted);stroke-width:1;stroke-dasharray:3 4;opacity:.7}
+  .goal svg .mkt{fill:var(--muted);font-family:"IBM Plex Sans",sans-serif;font-size:9.5px}
+  .goal svg .reft{fill:var(--muted);font-family:"IBM Plex Sans",sans-serif;font-size:10.5px}
+  .goal svg .endt{font-family:"IBM Plex Sans",sans-serif;font-size:11px;font-weight:600}
+  .goal svg .meta-t{fill:var(--ink)}
+  .goal svg .pace-t{fill:var(--clay)}
+  .goal tr.fut td{color:var(--faint)}
+  .goal tr.fut td.l{color:var(--muted)}
+
+  /* ---------- calendário ---------- */
+  .cal{width:100%;border-collapse:collapse;font-size:13px;table-layout:fixed}
+  .cal th,.cal td{text-align:left;white-space:normal;word-break:break-word}
+  .cal col.c1{width:10%}.cal col.c2{width:29%}.cal col.c3{width:13%}.cal col.c4{width:15%}.cal col.c5{width:33%}
+  .cal th{font-size:10.5px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);font-weight:600;text-align:left;padding:10px 12px;border-bottom:1px solid var(--line-strong);background:var(--surface-2);white-space:nowrap}
+  .cal td{padding:10px 12px;border-bottom:1px solid var(--line);vertical-align:top}
+  .cal td.q{font-family:"IBM Plex Mono",monospace;font-size:12px;font-weight:600;line-height:1.35}
+  .cal .o{font-weight:500}
+  .cal .o em{display:block;font-style:normal;font-size:12px;color:var(--faint);margin-top:2px;line-height:1.45}
+  .cal .fr{font-size:12px;color:var(--muted)}
+  .cal .ev{font-family:"IBM Plex Mono",monospace;font-size:12px;font-variant-numeric:tabular-nums}
+  .st{display:inline-block;font-size:10px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;border-radius:999px;padding:2px 8px;line-height:1.5}
+  .st.no{background:var(--teal-soft);color:var(--teal)}
+  .st.hoje{background:var(--meta-soft);color:var(--meta)}
+  .st.falta{background:var(--surface-2);color:var(--faint);border:1px solid var(--line-strong)}
+  .st.risco{background:var(--clay-soft);color:var(--clay)}
+  tr.done td{background:transparent}
+  tr.fut2 td{color:var(--faint)}
+  tr.fut2 .o{color:var(--muted)}
+
+  /* ---------- composição ---------- */
+  .sw.c-comn,svg .c-comn{background:var(--clay);fill:var(--clay)}
+  .sw.c-comp,svg .c-comp{background:#d9a08a;fill:#d9a08a}
+  .sw.c-csn,svg .c-csn{background:#8a5a1f;fill:#8a5a1f}
+  .sw.c-csp,svg .c-csp{background:#cbb08a;fill:#cbb08a}
+  .sw.c-rec,.goal svg .c-rec,svg .c-rec{background:#8c98a4;fill:#8c98a4}
+  .sw.c-site,svg .c-site{background:var(--teal);fill:var(--teal)}
+  .sw.c-web,svg .c-web{background:var(--disp);fill:var(--disp)}
+  .sw.c-traf,svg .c-traf{background:var(--meta);fill:var(--meta)}
+  .sw.c-anne,svg .c-anne{background:var(--amber);fill:var(--amber)}
+  .sw.c-com,svg .c-com{background:var(--clay);fill:var(--clay)}
+  .sw.c-grupo,svg .c-grupo{background:#7fc0a2;fill:#7fc0a2}
+  .sw.c-org,svg .c-org{background:#c3ced8;fill:#c3ced8}
+  .sw.c-sem,svg .c-sem{background:#e2e8ee;fill:#e2e8ee}
+  svg .tot{fill:var(--muted);font-family:"IBM Plex Mono",monospace;font-size:10px;font-weight:600}
+  svg .grid{stroke:var(--line);stroke-width:1}
+  svg .base{stroke:var(--line-strong);stroke-width:1.2}
+  svg .ax{fill:var(--faint);font-family:"IBM Plex Mono",monospace;font-size:10px}
+  svg .dl{fill:var(--muted);font-family:"IBM Plex Mono",monospace;font-size:10px}
+  svg .dw{fill:var(--faint);font-family:"IBM Plex Sans",sans-serif;font-size:9px}
+  .channel .chartbox svg{width:100%;min-width:720px;max-width:100%;height:auto;display:block}
+
+  /* ---------- notas ---------- */
+  .notes{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:20px 22px;box-shadow:var(--shadow)}
+  .notes h2{font-family:"Archivo",sans-serif;font-size:17px;font-weight:700;margin:0 0 4px;letter-spacing:-.01em}
+  .notes h3{font-family:"Archivo",sans-serif;font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin:18px 0 6px}
+  .notes p,.notes li{font-size:13.5px;color:var(--ink);margin:0 0 6px}
+  .notes ul{margin:0;padding-left:18px;display:flex;flex-direction:column;gap:5px}
+  code{font-family:"IBM Plex Mono",monospace;font-size:.88em;background:var(--surface-2);border:1px solid var(--line);border-radius:4px;padding:1px 5px}
+  .rule{height:1px;background:var(--line);margin:18px 0 0}
+  footer{font-size:12px;color:var(--faint);text-align:center;font-family:"IBM Plex Mono",monospace}
+  /* ---------- impressão / PDF ---------- */
+  @media print{
+    @page{ size:A4 landscape; margin:11mm 10mm 13mm; }
+    :root{
+      --paper:#ffffff;--surface:#ffffff;--surface-2:#f2f5f8;--ink:#141d26;--muted:#4e5d6b;--faint:#75838f;
+      --line:#d7dee5;--line-strong:#b6c2cd;--meta:#22509f;--meta-soft:#eaf0fb;--shadow:none;
+    }
+    :root{--disp:#256647;--disp-soft:#e6f2ec;--clay:#93381d;--clay-soft:#fae5de;--teal:#0a5d57;--teal-soft:#ddf0ee;--amber:#7a5709;--amber-soft:#fbeed0;}
+    *{ -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+    body{ background:#fff; font-size:9.6px; }
+    .wrap{ max-width:none; padding:0; gap:0; display:block; }
+    .channel,.notes,.kpi{ box-shadow:none; }
+    .scroll{ overflow:visible; }
+    .goal svg{ min-width:0; width:100%; height:auto; }
+    thead{ display:table-header-group; }
+    tr,.step,.kpi,.goalkpis>div,.costs>div{ break-inside:avoid; }
+    .masthead{ margin-bottom:8px; }
+    .kpis{ margin-bottom:10px; }
+    .alert{ margin-bottom:10px; }
+    .channel,.notes{ break-inside:avoid; margin-bottom:10px; }
+    .channel.meta,.notes{ break-before:page; }
+    .channel.goal{ break-inside:auto; }
+    .channel.goal .chartbox{ break-before:page; break-inside:avoid; }
+    .channel.goal .goalkpis{ break-inside:avoid; }
+    .channel.goal .scroll:last-of-type{ break-before:page; }
+    .notes{ break-inside:auto; }
+    .notes ul,.notes h3{ break-inside:avoid; }
+    footer{ margin-top:8px; }
+    .ch-head h2{ font-size:15px; }
+    .masthead h1{ font-size:26px; }
+    .kpi .val{ font-size:19px; }
+    .goalkpis .c-val,.costs .c-val{ font-size:16px; }
+    table{ font-size:9px; }
+    tbody td{ padding:4.5px 7px; }
+    thead th{ padding:5px 7px; font-size:8.5px; }
+    .notes p,.notes li{ font-size:9.6px; }
+  }
+
+
+  .meses{display:flex;flex-wrap:wrap;align-items:center;gap:6px;font-size:13px}
+  .meses .ml{font-size:10.5px;text-transform:uppercase;letter-spacing:.09em;color:var(--muted);font-weight:600;margin-right:4px}
+  .meses a{padding:6px 14px;border-radius:999px;border:1px solid var(--line-strong);background:var(--surface);color:var(--ink);text-decoration:none;font-weight:500}
+  .meses a.on{background:var(--ink);color:#fff;border-color:var(--ink)}
+  .meses a:hover:not(.on){border-color:var(--ink)}
+</style>
+</head>
+<body>
+<div class="wrap">
+<nav class="meses" aria-label="Escolher o mês"><span class="ml">Mês</span><a href="2026-09.html" aria-current="page" class="on">Setembro 2026</a><a href="2026-10.html">Outubro 2026</a></nav>
+
+  <header class="masthead">
+    <h1><span>Grupo SOU · acompanhamento diário</span>Tráfego Setembro 2026</h1>
+    <div class="stamp">
+      janela: <b>01/09 – 30/09 · mês encerrado, prévia até 07/10</b><br>
+      dados até <b>02/10, 12h08</b> Brasília<br>
+      (<b>11h08</b> em Manaus) · última venda 23h59<br>
+      Data Core + Anne IA (ao vivo)
+    </div>
+  </header>
+
+  <section class="kpis">
+    <div class="kpi out"><div class="lbl">Investido no mês</div><div class="val">R$ 98.074</div><div class="sub">Meta R$ 68.535 + imposto R$ 9.478 · Disparo R$ 20.060 · <b>98% do teto de R$ 100 mil</b></div></div>
+    <div class="kpi in"><div class="lbl">Retorno líquido atribuído</div><div class="val">R$ 130.513</div><div class="sub">220 vendas · 25% do faturamento</div></div>
+    <div class="kpi ratio"><div class="lbl">ROAS líquido</div><div class="val">1,33×</div><div class="sub">webinário 1,35× · blindado 5,36×</div></div>
+    <div class="kpi ctx"><div class="lbl">Faturamento total do mês</div><div class="val">R$ 518.464</div><div class="sub">1298 vendas líq. · 69% da meta acum.</div></div>
+  </section>
+
+  <div class="alert ok">
+    <div class="t">Setembro segue em R$ 518.463,90 líquidos (69,1% da meta) — nenhum reembolso novo desde ontem</div>
+    <p>Com os dados de 02/10 às 12h08 (Brasília), setembro continua com <b>R$ 518.463,90</b> líquidos em 1.298 vendas: o mesmo número da leitura de ontem, ou seja, a garantia de 7 dias ainda não derrubou nenhuma venda do mês. O resultado fica R$ 231.536,10 abaixo da meta de R$ 750 mil e cerca de R$ 17,5 mil abaixo do cenário realista de R$ 536 mil. Quem salvou o mês foi o carrinho do <b>Elite Polícias AM</b>: 171 vendas novas e R$ 129.872,54 desde a live de 28/09. O tráfego consumiu R$ 98.073,79 com imposto (98,1% do teto) e devolveu ROAS de 1,33 no total e 1,96 sem o aquecimento. Prévia até 07/10; o número só congela em 08/10.</p>
+  </div>
+
+  <section class="channel">
+    <div class="ch-head">
+      <h2>Calendário de setembro — o que o banco já mostra</h2>
+      <div class="desc">Cada marco do plano confrontado com o que existe hoje no Data Core e no banco da Anne. Hoje é <b>qua, 30/09</b>.</div>
+      <div class="tot">no ar <b>6</b> · a fazer <b>1</b></div>
+    </div>
+    <div class="scroll">
+      <table class="cal">
+        <colgroup><col class="c1"><col class="c2"><col class="c3"><col class="c4"><col class="c5"></colgroup>
+        <thead><tr><th>Período</th><th>O que acontece</th><th>Frentes</th><th>Status</th><th>Evidência no banco</th></tr></thead>
+        <tbody>
+          <tr class="done">
+            <td class="q">05/09</td>
+            <td class="o">Entra no ar a venda direta blindada<em>Anuncio leva ao site; o aluno preenche o blindado para ver preco. Se nao comprar, a Anne IA confere na Hubla em 10 min e abre 6 follow-ups</em></td>
+            <td class="fr">TJ-AM R$ 1.597<br>SEDUC-AM e SEMSA R$ 997</td>
+            <td><span class="st no">no ar</span></td>
+            <td class="ev">Campanhas próprias [PLANO][BLINDADO] e os perpétuos Advantage.<br>No mês: R$ 12.556 investidos → <b>69 vendas, R$ 67.308 líq. · 5,36×</b>. CAC R$ 182.</td>
+          </tr>
+          <tr class="done">
+            <td class="q">06/09 em diante</td>
+            <td class="o">Webinarios diarios, <b>sem data de fim</b> — seguem ate 30/09 e entram em outubro</td>
+            <td class="fr">TJ-AM · SEDUC-PA · SEDUC-AM</td>
+            <td><span class="st no">3 de 3 no ar</span></td>
+            <td class="ev">TJ-AM — <b>1433 leads, 29 vendas</b> (R$ 31.190).<br>SEDUC-PA — <b>531 leads, 15 vendas</b> (R$ 8.185).<br>SEDUC-AM — <b>726 leads, 20 vendas</b> (R$ 17.068).</td>
+          </tr>
+          <tr class="fut2">
+            <td class="q">08/09 em diante</td>
+            <td class="o">Play Passei 100% no ar e webinario das Policias — sem data de fim<em>Criativos divididos: parte para a pagina de vendas, parte para a VSL do Play Passei — e todos deveriam cair na VSL do CEI. <b>Nada disso esta no ar: o Play Passei segue vendendo so o front, em pagina</b></em></td>
+            <td class="fr">Play Passei · Policias AM</td>
+            <td><span class="st risco">atrasado</span></td>
+            <td class="ev"><b>Play Passei roda só o funil de página</b>: R$ 10.320 → R$ 4.297 líq. (<b>0,42×</b>).<br>⚠ <b>A VSL do CEI segue pendente de edicao do video. Enquanto o upsell nao entra, o Play Passei roda so o funil de pagina.</b></td>
+          </tr>
+          <tr class="done">
+            <td class="q">08/09 e 15/09</td>
+            <td class="o">Webinario do PRF, <b>1 por semana</b>, vendendo o Elite PRF dentro do webinario<em>Ingresso de R$ 19,90 nas semanas 2 e 3. Quem nao comprar entra no grupo do Estude Comigo na semana de 21/09, como nos outros funis</em></td>
+            <td class="fr">PRF</td>
+            <td><span class="st no">1o rodou<br>em 08/09</span></td>
+            <td class="ev"><b>36 ingressos</b> · R$ 1.933 de mídia · <b>CPA R$ 53,69</b> (gate ≤ R$ 75).<br><b>4 compradores de ingresso fecharam o Elite PRF</b> — 11,1% de conversão, R$ 4.994 líq.</td>
+          </tr>
+          <tr class="done">
+            <td class="q">14 a 18/09</td>
+            <td class="o">Estude Comigo (aquecimento no grupo)</td>
+            <td class="fr">SEDUC-AM · SEDUC-PA · TJ-AM</td>
+            <td><span class="st no">aconteceu</span></td>
+            <td class="ev">Base em <b>2.690 leads</b> nos três funis.</td>
+          </tr>
+          <tr class="done">
+            <td class="q">21/09</td>
+            <td class="o">Live com 1 CPL — <b>1o corte</b>. Carrinho do TJ-AM abriu em 22/09</td>
+            <td class="fr">TJ-AM</td>
+            <td><span class="st no">aconteceu</span></td>
+            <td class="ev">Dia do carrinho: <b>16 vendas novas, R$ 18.650</b>. Depois: 47 / R$ 36.012. Desde a live: <b>65 vendas novas, R$ 57.471</b>. Disparo: 794 msgs em 21/09; 4.213 msgs em 22/09; 55 msgs em 24/09.</td>
+          </tr>
+          <tr class="done">
+            <td class="q">22/09</td>
+            <td class="o">Live com 1 CPL. Carrinho do SEDUC-AM abriu em 23/09</td>
+            <td class="fr">SEDUC-AM</td>
+            <td><span class="st no">aconteceu</span></td>
+            <td class="ev">Dia do carrinho: <b>4 vendas novas, R$ 2.884</b>. Depois: 9 / R$ 7.357. Desde a live: <b>14 vendas novas, R$ 11.128</b>. Disparo: 540 msgs em 22/09; 1.060 msgs em 23/09.</td>
+          </tr>
+          <tr class="fut2">
+            <td class="q">23/09</td>
+            <td class="o">Live com 1 CPL, <b>hoje as 19h</b>. Carrinho do SEDUC-PA abre em 24/09</td>
+            <td class="fr">SEDUC-PA</td>
+            <td><span class="st hoje">hoje, 19h</span></td>
+            <td class="ev">Dia do carrinho: <b>1 vendas novas, R$ 487</b>. Depois: 0 / R$ 0. Desde a live: <b>3 vendas novas, R$ 1.677</b>.</td>
+          </tr>
+          <tr class="fut2">
+            <td class="q">21 a 25/09</td>
+            <td class="o">Estude Comigo (aquecimento no grupo)</td>
+            <td class="fr">Policias AM · PRF</td>
+            <td><span class="st hoje">em curso</span></td>
+            <td class="ev">Campanhas [FASE3] de captacao Estude Comigo de Policias e PRF no ar; lembretes das lives de 28 e 29/09 ja rodando.</td>
+          </tr>
+          <tr class="fut2">
+            <td class="q">28/09</td>
+            <td class="o">Live com 1 CPL<em>Carrinho abriu na própria live (antes previsto para 29/09) — três dias dentro de setembro. O webinário continua captando para outubro</em></td>
+            <td class="fr">Policias AM</td>
+            <td><span class="st hoje">hoje · carrinho aberto</span></td>
+            <td class="ev">Live com ~20% de comparecimento ao vivo (Anne). Oferta R$ 997 à vista ou 12× R$ 99,70.</td>
+          </tr>
+          <tr class="fut2">
+            <td class="q">29/09</td>
+            <td class="o">Live com 1 CPL<em>Carrinho abre em 30/09 — um dia dentro de setembro</em></td>
+            <td class="fr">PRF</td>
+            <td><span class="st risco">1 dia no mes</span></td>
+            <td class="ev">Ticket R$ 1.597. <b>Praticamente toda a receita cai em outubro.</b></td>
+          </tr>
+          <tr class="fut2">
+            <td class="q">01/10</td>
+            <td class="o">Tudo continua no ar, com o orcamento de outubro. Os grupos ja tem leads aquecidos para o proximo corte</td>
+            <td class="fr">todas as frentes</td>
+            <td><span class="st falta">outubro</span></td>
+            <td class="ev">Os funis já somam <b>2.690 leads</b> (TJ-AM 1.433 + SEDUC-PA 531 + SEDUC-AM 726) — <b>a meta de 750 foi superada em 259%</b>.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="channel goal">
+    <div class="ch-head">
+      <h2>Meta de R$ 750 mil — ritmo diário</h2>
+      <div class="desc">Receita <b>líquida</b> na Hubla. Sábado, domingo e o feriado de 07/09 valem meia meta; o que sai deles é redistribuído nos dias úteis.</div>
+      <div class="tot">dia útil <b>R$ 29.411,76</b> · meia meta <b>R$ 14.705,88</b></div>
+    </div>
+    <div class="goalkpis">
+      <div><div class="c-lbl">Realizado até agora</div><div class="c-val">R$ 518.463,90</div><div class="c-sub">69% da meta acumulada</div></div>
+      <div><div class="c-lbl">Defasagem acumulada</div><div class="c-val" style="color:var(--clay)">− R$ 231.536,10</div><div class="c-sub">meta acum. era R$ 750.000,00</div></div>
+      <div><div class="c-lbl">Novo ritmo necessário</div><div class="c-val" style="color:var(--clay)">R$ 0,00</div><div class="c-sub">por dia útil no que falta do mês (+-100.0%)</div></div>
+      <div><div class="c-lbl">Projeção no ritmo atual</div><div class="c-val">R$ 478.791</div><div class="c-sub">64% da meta · sem os cortes do fim do mês</div></div>
+    </div>
+    <div class="chartbox"><div class="chart-t">Quanto precisa entrar por dia</div>
+      <div class="chart-legend"><span><i class="sw tgt"></i>meta do dia</span><span><i class="sw half"></i>meia meta (fds/feriado)</span><span><i class="sw got"></i>realizado</span><span><i class="sw part"></i>dia em curso</span></div>
+      <div class="scroll"><svg viewBox="0 0 940 320" width="940" height="320" role="img" aria-label="Meta diaria contra o realizado"><line class="grid" x1="58" x2="928" y1="256.0" y2="256.0"/><text class="ax" x="50" y="260.0" text-anchor="end">0</text><line class="grid" x1="58" x2="928" y1="226.0" y2="226.0"/><text class="ax" x="50" y="230.0" text-anchor="end">10k</text><line class="grid" x1="58" x2="928" y1="196.0" y2="196.0"/><text class="ax" x="50" y="200.0" text-anchor="end">20k</text><line class="grid" x1="58" x2="928" y1="166.0" y2="166.0"/><text class="ax" x="50" y="170.0" text-anchor="end">30k</text><line class="grid" x1="58" x2="928" y1="136.0" y2="136.0"/><text class="ax" x="50" y="140.0" text-anchor="end">40k</text><line class="grid" x1="58" x2="928" y1="106.0" y2="106.0"/><text class="ax" x="50" y="110.0" text-anchor="end">50k</text><line class="grid" x1="58" x2="928" y1="76.0" y2="76.0"/><text class="ax" x="50" y="80.0" text-anchor="end">60k</text><line class="grid" x1="58" x2="928" y1="46.0" y2="46.0"/><text class="ax" x="50" y="50.0" text-anchor="end">70k</text><line class="grid" x1="58" x2="928" y1="16.0" y2="16.0"/><text class="ax" x="50" y="20.0" text-anchor="end">80k</text><rect class="tgt" x="62.8" y="167.8" width="19.5" height="88.2" rx="2"/><rect class="got" x="62.8" y="210.4" width="19.5" height="45.6" rx="2"/><text class="dl" x="72.5" y="270" text-anchor="middle">1</text><text class="dw" x="72.5" y="282" text-anchor="middle">T</text><rect class="tgt" x="91.8" y="167.8" width="19.5" height="88.2" rx="2"/><rect class="got" x="91.8" y="226.8" width="19.5" height="29.2" rx="2"/><text class="dl" x="101.5" y="270" text-anchor="middle">2</text><text class="dw" x="101.5" y="282" text-anchor="middle">Q</text><rect class="tgt" x="120.8" y="167.8" width="19.5" height="88.2" rx="2"/><rect class="got" x="120.8" y="230.7" width="19.5" height="25.3" rx="2"/><text class="dl" x="130.5" y="270" text-anchor="middle">3</text><text class="dw" x="130.5" y="282" text-anchor="middle">Q</text><rect class="tgt" x="149.8" y="167.8" width="19.5" height="88.2" rx="2"/><rect class="got" x="149.8" y="233.3" width="19.5" height="22.7" rx="2"/><text class="dl" x="159.5" y="270" text-anchor="middle">4</text><text class="dw" x="159.5" y="282" text-anchor="middle">S</text><rect class="tgt half" x="178.8" y="211.9" width="19.5" height="44.1" rx="2"/><rect class="got" x="178.8" y="231.2" width="19.5" height="24.8" rx="2"/><text class="dl wknd" x="188.5" y="270" text-anchor="middle">5</text><text class="dw" x="188.5" y="282" text-anchor="middle">S</text><rect class="tgt half" x="207.8" y="211.9" width="19.5" height="44.1" rx="2"/><rect class="got" x="207.8" y="235.2" width="19.5" height="20.8" rx="2"/><text class="dl wknd" x="217.5" y="270" text-anchor="middle">6</text><text class="dw" x="217.5" y="282" text-anchor="middle">D</text><rect class="tgt half" x="236.8" y="211.9" width="19.5" height="44.1" rx="2"/><rect class="got" x="236.8" y="239.2" width="19.5" height="16.8" rx="2"/><text class="dl wknd" x="246.5" y="270" text-anchor="middle">7</text><text class="dw" x="246.5" y="282" text-anchor="middle">F</text><rect class="tgt" x="265.8" y="167.8" width="19.5" height="88.2" rx="2"/><rect class="got" x="265.8" y="197.3" width="19.5" height="58.7" rx="2"/><text class="dl" x="275.5" y="270" text-anchor="middle">8</text><text class="dw" x="275.5" y="282" text-anchor="middle">T</text><rect class="tgt" x="294.8" y="167.8" width="19.5" height="88.2" rx="2"/><rect class="got" x="294.8" y="178.6" width="19.5" height="77.4" rx="2"/><text class="dl" x="304.5" y="270" text-anchor="middle">9</text><text class="dw" x="304.5" y="282" text-anchor="middle">Q</text><rect class="tgt" x="323.8" y="167.8" width="19.5" height="88.2" rx="2"/><rect class="got" x="323.8" y="226.7" width="19.5" height="29.3" rx="2"/><text class="dl" x="333.5" y="270" text-anchor="middle">10</text><text class="dw" x="333.5" y="282" text-anchor="middle">Q</text><rect class="tgt" x="352.8" y="167.8" width="19.5" height="88.2" rx="2"/><rect class="got" x="352.8" y="232.0" width="19.5" height="24.0" rx="2"/><text class="dl" x="362.5" y="270" text-anchor="middle">11</text><text class="dw" x="362.5" y="282" text-anchor="middle">S</text><rect class="tgt half" x="381.8" y="211.9" width="19.5" height="44.1" rx="2"/><rect class="got" x="381.8" y="224.5" width="19.5" height="31.5" rx="2"/><text class="dl wknd" x="391.5" y="270" text-anchor="middle">12</text><text class="dw" x="391.5" y="282" text-anchor="middle">S</text><rect class="tgt half" x="410.8" y="211.9" width="19.5" height="44.1" rx="2"/><rect class="got" x="410.8" y="227.1" width="19.5" height="28.9" rx="2"/><text class="dl wknd" x="420.5" y="270" text-anchor="middle">13</text><text class="dw" x="420.5" y="282" text-anchor="middle">D</text><rect class="tgt" x="439.8" y="167.8" width="19.5" height="88.2" rx="2"/><rect class="got" x="439.8" y="196.8" width="19.5" height="59.2" rx="2"/><text class="dl" x="449.5" y="270" text-anchor="middle">14</text><text class="dw" x="449.5" y="282" text-anchor="middle">S</text><rect class="tgt" x="468.8" y="167.8" width="19.5" height="88.2" rx="2"/><rect class="got" x="468.8" y="219.7" width="19.5" height="36.3" rx="2"/><text class="dl" x="478.5" y="270" text-anchor="middle">15</text><text class="dw" x="478.5" y="282" text-anchor="middle">T</text><line class="mk" x1="478.5" x2="478.5" y1="286" y2="296"/><text class="mkt" x="478.5" y="304" text-anchor="middle">web PRF</text><rect class="tgt" x="497.8" y="167.8" width="19.5" height="88.2" rx="2"/><rect class="got" x="497.8" y="216.0" width="19.5" height="40.0" rx="2"/><text class="dl" x="507.5" y="270" text-anchor="middle">16</text><text class="dw" x="507.5" y="282" text-anchor="middle">Q</text><rect class="tgt" x="526.8" y="167.8" width="19.5" height="88.2" rx="2"/><rect class="got" x="526.8" y="223.1" width="19.5" height="32.9" rx="2"/><text class="dl" x="536.5" y="270" text-anchor="middle">17</text><text class="dw" x="536.5" y="282" text-anchor="middle">Q</text><rect class="tgt" x="555.8" y="167.8" width="19.5" height="88.2" rx="2"/><rect class="got" x="555.8" y="219.1" width="19.5" height="36.9" rx="2"/><text class="dl" x="565.5" y="270" text-anchor="middle">18</text><text class="dw" x="565.5" y="282" text-anchor="middle">S</text><rect class="tgt half" x="584.8" y="211.9" width="19.5" height="44.1" rx="2"/><rect class="got" x="584.8" y="232.2" width="19.5" height="23.8" rx="2"/><text class="dl wknd" x="594.5" y="270" text-anchor="middle">19</text><text class="dw" x="594.5" y="282" text-anchor="middle">S</text><rect class="tgt half" x="613.8" y="211.9" width="19.5" height="44.1" rx="2"/><rect class="got" x="613.8" y="247.1" width="19.5" height="8.9" rx="2"/><text class="dl wknd" x="623.5" y="270" text-anchor="middle">20</text><text class="dw" x="623.5" y="282" text-anchor="middle">D</text><rect class="tgt" x="642.8" y="167.8" width="19.5" height="88.2" rx="2"/><rect class="got" x="642.8" y="216.0" width="19.5" height="40.0" rx="2"/><text class="dl" x="652.5" y="270" text-anchor="middle">21</text><text class="dw" x="652.5" y="282" text-anchor="middle">S</text><line class="mk" x1="652.5" x2="652.5" y1="286" y2="296"/><text class="mkt" x="652.5" y="304" text-anchor="middle">live TJ</text><rect class="tgt" x="671.8" y="167.8" width="19.5" height="88.2" rx="2"/><rect class="got" x="671.8" y="165.3" width="19.5" height="90.7" rx="2"/><text class="dl" x="681.5" y="270" text-anchor="middle">22</text><text class="dw" x="681.5" y="282" text-anchor="middle">T</text><line class="mk" x1="681.5" x2="681.5" y1="286" y2="296"/><text class="mkt" x="681.5" y="304" text-anchor="middle">carrinho TJ</text><rect class="tgt" x="700.8" y="167.8" width="19.5" height="88.2" rx="2"/><rect class="got" x="700.8" y="198.8" width="19.5" height="57.2" rx="2"/><text class="dl" x="710.5" y="270" text-anchor="middle">23</text><text class="dw" x="710.5" y="282" text-anchor="middle">Q</text><line class="mk" x1="710.5" x2="710.5" y1="286" y2="296"/><text class="mkt" x="710.5" y="304" text-anchor="middle">carrinho SEDUC-AM</text><rect class="tgt" x="729.8" y="167.8" width="19.5" height="88.2" rx="2"/><rect class="got" x="729.8" y="226.9" width="19.5" height="29.1" rx="2"/><text class="dl" x="739.5" y="270" text-anchor="middle">24</text><text class="dw" x="739.5" y="282" text-anchor="middle">Q</text><rect class="tgt" x="758.8" y="167.8" width="19.5" height="88.2" rx="2"/><rect class="got" x="758.8" y="233.8" width="19.5" height="22.2" rx="2"/><text class="dl" x="768.5" y="270" text-anchor="middle">25</text><text class="dw" x="768.5" y="282" text-anchor="middle">S</text><rect class="tgt half" x="787.8" y="211.9" width="19.5" height="44.1" rx="2"/><rect class="got" x="787.8" y="228.4" width="19.5" height="27.6" rx="2"/><text class="dl wknd" x="797.5" y="270" text-anchor="middle">26</text><text class="dw" x="797.5" y="282" text-anchor="middle">S</text><rect class="tgt half" x="816.8" y="211.9" width="19.5" height="44.1" rx="2"/><rect class="got" x="816.8" y="222.4" width="19.5" height="33.6" rx="2"/><text class="dl wknd" x="826.5" y="270" text-anchor="middle">27</text><text class="dw" x="826.5" y="282" text-anchor="middle">D</text><rect class="tgt" x="845.8" y="167.8" width="19.5" height="88.2" rx="2"/><rect class="got" x="845.8" y="16.8" width="19.5" height="239.2" rx="2"/><text class="dl" x="855.5" y="270" text-anchor="middle">28</text><text class="dw" x="855.5" y="282" text-anchor="middle">S</text><line class="mk" x1="855.5" x2="855.5" y1="286" y2="296"/><text class="mkt" x="855.5" y="304" text-anchor="middle">live</text><rect class="tgt" x="874.8" y="167.8" width="19.5" height="88.2" rx="2"/><rect class="got" x="874.8" y="88.8" width="19.5" height="167.2" rx="2"/><text class="dl" x="884.5" y="270" text-anchor="middle">29</text><text class="dw" x="884.5" y="282" text-anchor="middle">T</text><line class="mk" x1="884.5" x2="884.5" y1="286" y2="296"/><text class="mkt" x="884.5" y="304" text-anchor="middle">live</text><rect class="tgt" x="903.8" y="167.8" width="19.5" height="88.2" rx="2"/><rect class="got part" x="903.8" y="80.7" width="19.5" height="175.3" rx="2"/><text class="dl" x="913.5" y="270" text-anchor="middle">30</text><text class="dw" x="913.5" y="282" text-anchor="middle">Q</text><line class="base" x1="58" x2="928" y1="256.0" y2="256.0"/></svg></div></div>
+    <div class="chartbox"><div class="chart-t">Acumulado contra a meta</div>
+      <div class="chart-legend"><span><i class="sw ln-meta"></i>meta acumulada</span><span><i class="sw ln-real"></i>realizado</span><span><i class="sw ln-pace"></i>projeção no ritmo atual</span><span><i class="sw ln-ref"></i>realista do plano</span></div>
+      <div class="scroll"><svg viewBox="0 0 940 290" width="940" height="290" role="img" aria-label="Acumulado contra a meta"><line class="grid" x1="62" x2="928" y1="250.0" y2="250.0"/><text class="ax" x="54" y="254.0" text-anchor="end">0</text><line class="grid" x1="62" x2="928" y1="191.5" y2="191.5"/><text class="ax" x="54" y="195.5" text-anchor="end">200k</text><line class="grid" x1="62" x2="928" y1="133.0" y2="133.0"/><text class="ax" x="54" y="137.0" text-anchor="end">400k</text><line class="grid" x1="62" x2="928" y1="74.5" y2="74.5"/><text class="ax" x="54" y="78.5" text-anchor="end">600k</text><line class="grid" x1="62" x2="928" y1="16.0" y2="16.0"/><text class="ax" x="54" y="20.0" text-anchor="end">800k</text><polygon class="gapfill" points="62.0,241.4 91.9,232.8 121.7,224.2 151.6,215.6 181.4,211.3 211.3,207.0 241.2,202.7 271.0,194.1 300.9,185.5 330.8,176.9 360.6,168.3 390.5,164.0 420.3,159.7 450.2,151.1 480.1,142.5 509.9,133.9 539.8,125.3 569.7,116.7 599.5,112.4 629.4,108.1 659.2,99.4 689.1,90.8 719.0,82.2 748.8,73.6 778.7,65.0 808.6,60.7 838.4,56.4 868.3,47.8 898.1,39.2 928.0,30.6 928.0,98.3 898.1,115.4 868.3,131.7 838.4,155.1 808.6,158.3 778.7,161.0 748.8,163.2 719.0,166.0 689.1,171.6 659.2,180.5 629.4,184.4 599.5,185.2 569.7,187.5 539.8,191.1 509.9,194.4 480.1,198.3 450.2,201.8 420.3,207.6 390.5,210.4 360.6,213.5 330.8,215.8 300.9,218.7 271.0,226.2 241.2,231.9 211.3,233.6 181.4,235.6 151.6,238.0 121.7,240.2 91.9,242.7 62.0,245.6"/><line class="mkv" x1="659.2" x2="659.2" y1="16" y2="250.0"/><text class="mkt" x="654.2" y="28" text-anchor="end">lives TJ/SEDUC</text><line class="mkv" x1="898.1" x2="898.1" y1="16" y2="250.0"/><text class="mkt" x="893.1" y="28" text-anchor="end">carrinhos PRF/polícias</text><line class="pace" x1="62.0" y1="244.5" x2="928.0" y2="110.0"/><polyline class="meta" points="62.0,241.4 91.9,232.8 121.7,224.2 151.6,215.6 181.4,211.3 211.3,207.0 241.2,202.7 271.0,194.1 300.9,185.5 330.8,176.9 360.6,168.3 390.5,164.0 420.3,159.7 450.2,151.1 480.1,142.5 509.9,133.9 539.8,125.3 569.7,116.7 599.5,112.4 629.4,108.1 659.2,99.4 689.1,90.8 719.0,82.2 748.8,73.6 778.7,65.0 808.6,60.7 838.4,56.4 868.3,47.8 898.1,39.2 928.0,30.6"/><polyline class="realz" points="62.0,245.6 91.9,242.7 121.7,240.2 151.6,238.0 181.4,235.6 211.3,233.6 241.2,231.9 271.0,226.2 300.9,218.7 330.8,215.8 360.6,213.5 390.5,210.4 420.3,207.6 450.2,201.8 480.1,198.3 509.9,194.4 539.8,191.1 569.7,187.5 599.5,185.2 629.4,184.4 659.2,180.5 689.1,171.6 719.0,166.0 748.8,163.2 778.7,161.0 808.6,158.3 838.4,155.1 868.3,131.7 898.1,115.4 928.0,98.3"/><circle class="dot" cx="62.0" cy="245.6" r="3.5"/><circle class="dot" cx="91.9" cy="242.7" r="3.5"/><circle class="dot" cx="121.7" cy="240.2" r="3.5"/><circle class="dot" cx="151.6" cy="238.0" r="3.5"/><circle class="dot" cx="181.4" cy="235.6" r="3.5"/><circle class="dot" cx="211.3" cy="233.6" r="3.5"/><circle class="dot" cx="241.2" cy="231.9" r="3.5"/><circle class="dot" cx="271.0" cy="226.2" r="3.5"/><circle class="dot" cx="300.9" cy="218.7" r="3.5"/><circle class="dot" cx="330.8" cy="215.8" r="3.5"/><circle class="dot" cx="360.6" cy="213.5" r="3.5"/><circle class="dot" cx="390.5" cy="210.4" r="3.5"/><circle class="dot" cx="420.3" cy="207.6" r="3.5"/><circle class="dot" cx="450.2" cy="201.8" r="3.5"/><circle class="dot" cx="480.1" cy="198.3" r="3.5"/><circle class="dot" cx="509.9" cy="194.4" r="3.5"/><circle class="dot" cx="539.8" cy="191.1" r="3.5"/><circle class="dot" cx="569.7" cy="187.5" r="3.5"/><circle class="dot" cx="599.5" cy="185.2" r="3.5"/><circle class="dot" cx="629.4" cy="184.4" r="3.5"/><circle class="dot" cx="659.2" cy="180.5" r="3.5"/><circle class="dot" cx="689.1" cy="171.6" r="3.5"/><circle class="dot" cx="719.0" cy="166.0" r="3.5"/><circle class="dot" cx="748.8" cy="163.2" r="3.5"/><circle class="dot" cx="778.7" cy="161.0" r="3.5"/><circle class="dot" cx="808.6" cy="158.3" r="3.5"/><circle class="dot" cx="838.4" cy="155.1" r="3.5"/><circle class="dot" cx="868.3" cy="131.7" r="3.5"/><circle class="dot" cx="898.1" cy="115.4" r="3.5"/><circle class="dot" cx="928.0" cy="98.3" r="3.5"/><line class="ref" x1="62" x2="928" y1="93.2" y2="93.2"/><text class="reft" x="924" y="87.2" text-anchor="end">realista do plano · R$ 536 mil</text><text class="endt meta-t" x="928.0" y="22.6" text-anchor="end">meta · R$ 750 mil</text><text class="endt pace-t" x="928.0" y="126.0" text-anchor="end">ritmo atual · R$ 478.791</text><text class="dl" x="62.0" y="266" text-anchor="middle">1</text><text class="dl" x="181.4" y="266" text-anchor="middle">5</text><text class="dl" x="330.8" y="266" text-anchor="middle">10</text><text class="dl" x="480.1" y="266" text-anchor="middle">15</text><text class="dl" x="629.4" y="266" text-anchor="middle">20</text><text class="dl" x="778.7" y="266" text-anchor="middle">25</text><text class="dl" x="928.0" y="266" text-anchor="middle">30</text><line class="base" x1="62" x2="928" y1="250.0" y2="250.0"/></svg></div></div>
+    <div class="scroll"><table>
+        <thead><tr><th class="l">Dia</th><th>Meta do dia</th><th>Realizado</th><th>Defasagem do dia</th><th>Meta acum.</th><th>Realizado acum.</th><th>Defasagem acum.</th></tr></thead>
+        <tbody><tr><td class="l">01/09 · ter</td><td class="num">29.411,76</td><td class="num">15.189,72</td><td class="num roas-bad">−14.222,04</td><td class="num">29.411,76</td><td class="num">15.189,72</td><td class="num roas-bad">−14.222,04</td></tr><tr><td class="l">02/09 · qua</td><td class="num">29.411,76</td><td class="num">9.740,30</td><td class="num roas-bad">−19.671,46</td><td class="num">58.823,53</td><td class="num">24.930,02</td><td class="num roas-bad">−33.893,51</td></tr><tr><td class="l">03/09 · qui</td><td class="num">29.411,76</td><td class="num">8.442,68</td><td class="num roas-bad">−20.969,08</td><td class="num">88.235,29</td><td class="num">33.372,70</td><td class="num roas-bad">−54.862,59</td></tr><tr><td class="l">04/09 · sex</td><td class="num">29.411,76</td><td class="num">7.571,04</td><td class="num roas-bad">−21.840,72</td><td class="num">117.647,06</td><td class="num">40.943,74</td><td class="num roas-bad">−76.703,32</td></tr><tr><td class="l">05/09 · sáb <span class="chip warn">meia meta</span></td><td class="num">14.705,88</td><td class="num">8.258,68</td><td class="num roas-bad">−6.447,20</td><td class="num">132.352,94</td><td class="num">49.202,42</td><td class="num roas-bad">−83.150,52</td></tr><tr><td class="l">06/09 · dom <span class="chip warn">meia meta</span></td><td class="num">14.705,88</td><td class="num">6.941,74</td><td class="num roas-bad">−7.764,14</td><td class="num">147.058,82</td><td class="num">56.144,16</td><td class="num roas-bad">−90.914,66</td></tr><tr><td class="l">07/09 · seg <span class="chip warn">feriado · meia meta</span></td><td class="num">14.705,88</td><td class="num">5.597,63</td><td class="num roas-bad">−9.108,25</td><td class="num">161.764,71</td><td class="num">61.741,79</td><td class="num roas-bad">−100.022,92</td></tr><tr><td class="l">08/09 · ter</td><td class="num">29.411,76</td><td class="num">19.561,10</td><td class="num roas-bad">−9.850,66</td><td class="num">191.176,47</td><td class="num">81.302,89</td><td class="num roas-bad">−109.873,58</td></tr><tr><td class="l">09/09 · qua</td><td class="num">29.411,76</td><td class="num">25.804,57</td><td class="num roas-bad">−3.607,19</td><td class="num">220.588,24</td><td class="num">107.107,46</td><td class="num roas-bad">−113.480,78</td></tr><tr><td class="l">10/09 · qui</td><td class="num">29.411,76</td><td class="num">9.767,40</td><td class="num roas-bad">−19.644,36</td><td class="num">250.000,00</td><td class="num">116.874,86</td><td class="num roas-bad">−133.125,14</td></tr><tr><td class="l">11/09 · sex</td><td class="num">29.411,76</td><td class="num">7.998,14</td><td class="num roas-bad">−21.413,62</td><td class="num">279.411,76</td><td class="num">124.873,00</td><td class="num roas-bad">−154.538,76</td></tr><tr><td class="l">12/09 · sáb <span class="chip warn">meia meta</span></td><td class="num">14.705,88</td><td class="num">10.515,64</td><td class="num roas-bad">−4.190,24</td><td class="num">294.117,65</td><td class="num">135.388,64</td><td class="num roas-bad">−158.729,01</td></tr><tr><td class="l">13/09 · dom <span class="chip warn">meia meta</span></td><td class="num">14.705,88</td><td class="num">9.647,16</td><td class="num roas-bad">−5.058,72</td><td class="num">308.823,53</td><td class="num">145.035,80</td><td class="num roas-bad">−163.787,73</td></tr><tr><td class="l">14/09 · seg</td><td class="num">29.411,76</td><td class="num">19.743,69</td><td class="num roas-bad">−9.668,07</td><td class="num">338.235,29</td><td class="num">164.779,49</td><td class="num roas-bad">−173.455,80</td></tr><tr><td class="l">15/09 · ter</td><td class="num">29.411,76</td><td class="num">12.108,56</td><td class="num roas-bad">−17.303,20</td><td class="num">367.647,06</td><td class="num">176.888,05</td><td class="num roas-bad">−190.759,01</td></tr><tr><td class="l">16/09 · qua</td><td class="num">29.411,76</td><td class="num">13.346,62</td><td class="num roas-bad">−16.065,14</td><td class="num">397.058,82</td><td class="num">190.234,67</td><td class="num roas-bad">−206.824,15</td></tr><tr><td class="l">17/09 · qui</td><td class="num">29.411,76</td><td class="num">10.983,30</td><td class="num roas-bad">−18.428,46</td><td class="num">426.470,59</td><td class="num">201.217,97</td><td class="num roas-bad">−225.252,62</td></tr><tr><td class="l">18/09 · sex</td><td class="num">29.411,76</td><td class="num">12.295,17</td><td class="num roas-bad">−17.116,59</td><td class="num">455.882,35</td><td class="num">213.513,14</td><td class="num roas-bad">−242.369,21</td></tr><tr><td class="l">19/09 · sáb <span class="chip warn">meia meta</span></td><td class="num">14.705,88</td><td class="num">7.923,81</td><td class="num roas-bad">−6.782,07</td><td class="num">470.588,24</td><td class="num">221.436,95</td><td class="num roas-bad">−249.151,29</td></tr><tr><td class="l">20/09 · dom <span class="chip warn">meia meta</span></td><td class="num">14.705,88</td><td class="num">2.963,97</td><td class="num roas-bad">−11.741,91</td><td class="num">485.294,12</td><td class="num">224.400,92</td><td class="num roas-bad">−260.893,20</td></tr><tr><td class="l">21/09 · seg</td><td class="num">29.411,76</td><td class="num">13.323,42</td><td class="num roas-bad">−16.088,34</td><td class="num">514.705,88</td><td class="num">237.724,34</td><td class="num roas-bad">−276.981,54</td></tr><tr><td class="l">22/09 · ter</td><td class="num">29.411,76</td><td class="num">30.232,52</td><td class="num roas-good">+820,76</td><td class="num">544.117,65</td><td class="num">267.956,86</td><td class="num roas-bad">−276.160,79</td></tr><tr><td class="l">23/09 · qua</td><td class="num">29.411,76</td><td class="num">19.080,53</td><td class="num roas-bad">−10.331,23</td><td class="num">573.529,41</td><td class="num">287.037,39</td><td class="num roas-bad">−286.492,02</td></tr><tr><td class="l">24/09 · qui</td><td class="num">29.411,76</td><td class="num">9.685,73</td><td class="num roas-bad">−19.726,03</td><td class="num">602.941,18</td><td class="num">296.723,12</td><td class="num roas-bad">−306.218,06</td></tr><tr><td class="l">25/09 · sex</td><td class="num">29.411,76</td><td class="num">7.416,26</td><td class="num roas-bad">−21.995,50</td><td class="num">632.352,94</td><td class="num">304.139,38</td><td class="num roas-bad">−328.213,56</td></tr><tr><td class="l">26/09 · sáb <span class="chip warn">meia meta</span></td><td class="num">14.705,88</td><td class="num">9.194,85</td><td class="num roas-bad">−5.511,03</td><td class="num">647.058,82</td><td class="num">313.334,23</td><td class="num roas-bad">−333.724,59</td></tr><tr><td class="l">27/09 · dom <span class="chip warn">meia meta</span></td><td class="num">14.705,88</td><td class="num">11.198,87</td><td class="num roas-bad">−3.507,01</td><td class="num">661.764,71</td><td class="num">324.533,10</td><td class="num roas-bad">−337.231,61</td></tr><tr><td class="l">28/09 · seg</td><td class="num">29.411,76</td><td class="num">79.748,11</td><td class="num roas-good">+50.336,35</td><td class="num">691.176,47</td><td class="num">404.281,21</td><td class="num roas-bad">−286.895,26</td></tr><tr><td class="l">29/09 · ter</td><td class="num">29.411,76</td><td class="num">55.733,71</td><td class="num roas-good">+26.321,95</td><td class="num">720.588,24</td><td class="num">460.014,92</td><td class="num roas-bad">−260.573,32</td></tr><tr><td class="l">30/09 · qua <span class="chip warn">parcial</span></td><td class="num">29.411,76</td><td class="num">58.448,98</td><td class="num roas-good">+29.037,22</td><td class="num">750.000,00</td><td class="num">518.463,90</td><td class="num roas-bad">−231.536,10</td></tr>
+          <tr class="total"><td class="l">Setembro · 30 dias</td><td class="num">750.000,00</td><td class="num">518.463,90</td><td class="num roas-bad">−231.536,10</td><td class="num">750.000,00</td><td class="num">518.463,90</td><td class="num roas-bad">−231.536,10</td></tr>
+        </tbody></table></div>
+  </section>
+
+  <section class="channel meta">
+    <div class="ch-head">
+      <h2>As frentes de tráfego</h2>
+      <div class="desc">Cada frente com o custo cheio — mídia do Meta, <b>mais o imposto de 13,83% sobre a mídia</b>, mais o disparo que a alimenta — contra o retorno líquido que dá para provar no banco. O aquecimento (fases 1–3) não vende agora por desenho: entra no custo, não no ROAS das outras frentes.</div>
+      <div class="tot">investido <b>R$ 98.073,79</b> · retorno líq. <b>R$ 130.512,84</b> · <b>1,33×</b></div>
+    </div>
+    <div class="scroll">
+      <table>
+        <thead><tr><th class="l">Frente</th><th>Meta</th><th>Imposto</th><th>Disparo</th><th>Investido</th><th>Vendas</th><th>Líquido</th><th>CAC</th><th>ROAS líq.</th></tr></thead>
+        <tbody>
+          <tr><td class="l"><b>Webinários</b> · TJ-AM, SEDUC-PA e SEDUC-AM<br><span class="chip good">IA · 3 no ar</span></td><td class="num">21.725,17</td><td class="num">3.004,59</td><td class="num">16.949,31</td><td class="num">41.679,07</td><td class="num">64</td><td class="num">56.443,21</td><td class="num">651,24</td><td class="num roas-good">1,35×</td></tr>
+          <tr><td class="l"><b>Blindado · venda direta</b><br><span class="chip good">fecha dentro do mês</span></td><td class="num">8.297,40</td><td class="num">1.147,53</td><td class="num">3.110,62</td><td class="num">12.555,55</td><td class="num">69</td><td class="num">67.307,72</td><td class="num">181,96</td><td class="num roas-good">5,36×</td></tr>
+          <tr><td class="l"><b>PRF</b> · ingresso + Elite<br><span class="chip good">webinário semanal</span></td><td class="num">1.932,99</td><td class="num">267,33</td><td class="num"><span class="zero">—</span></td><td class="num">2.200,32</td><td class="num">39</td><td class="num">2.464,73</td><td class="num">56,42</td><td class="num roas-good">1,12×</td></tr>
+          <tr><td class="l"><b>Play Passei</b> · só funil de página<br><span class="chip bad">CEI pendente</span></td><td class="num">9.065,89</td><td class="num">1.253,81</td><td class="num"><span class="zero">—</span></td><td class="num">10.319,70</td><td class="num">48</td><td class="num">4.297,18</td><td class="num">214,99</td><td class="num roas-bad">0,42×</td></tr>
+          <tr><td class="l"><b>Aquecimento</b> · atração (F1), consciência e corredor (F2), captação Estude Comigo (F3) e lembretes de live<br><span class="chip warn">retorno vem no corte</span></td><td class="num">27.513,96</td><td class="num">3.805,18</td><td class="num"><span class="zero">—</span></td><td class="num">31.319,14</td><td class="num"><span class="zero">—</span></td><td class="num"><span class="zero">—</span></td><td class="num"><span class="zero">—</span></td><td class="num zero">—</td></tr>
+          <tr class="total"><td class="l">Total</td><td class="num">68.535,41</td><td class="num">9.478,45</td><td class="num">20.059,93</td><td class="num">98.073,79</td><td class="num">220</td><td class="num">130.512,84</td><td class="num">445,79</td><td class="num roas-good">1,33×</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="lede">Entre as frentes que vendem, o <b>Blindado</b> lidera com folga: R$ 12.555,55 investidos com imposto viraram 69 vendas e R$ 67.307,72 (ROAS 5,36, CAC R$ 181,96). Os <b>Webinários</b> são a frente mais cara — R$ 41.679,07, dos quais R$ 16.949,31 de disparo — e devolveram 64 vendas e R$ 56.443,21 (ROAS 1,35, CAC R$ 651,24). PRF (ingresso de R$ 19,90) fica em 1,12 e o <b>Play Passei</b> em 0,42 (R$ 10.319,70 para R$ 4.297,18). O aquecimento custou R$ 31.319,14 e, por desenho, não tem venda atribuída: o retorno dele está nos cortes. Por isso o ROAS total de 1,33 subestima o mês; sem o aquecimento, o tráfego rendeu <b>1,96</b>.</p>
+  </section>
+
+  <section class="channel">
+    <div class="ch-head">
+      <h2>Composição da venda de cada dia</h2>
+      <div class="desc">Todo o faturamento líquido do dia repartido por origem. <b>Nova</b> = valor cheio ou 1ª parcela; <b>parcela</b> = da 2ª em diante. As categorias são exclusivas e somam exatamente o total.</div>
+      <div class="tot">produção do time comercial <b>R$ 276.646,16</b> · CS <b>R$ 20.352,16</b></div>
+    </div>
+    <div class="chartbox"><div class="chart-t">De onde veio o dinheiro, dia a dia</div>
+      <div class="chart-legend"><span><i class="sw c-comn"></i>Comercial nova</span><span><i class="sw c-comp"></i>Comercial parcela</span><span><i class="sw c-csn"></i>CS nova</span><span><i class="sw c-csp"></i>CS parcela</span><span><i class="sw c-rec"></i>Recorrência s/ dono</span><span><i class="sw c-site"></i>Site / blindado</span><span><i class="sw c-web"></i>Webinário</span><span><i class="sw c-traf"></i>Tráfego direto</span><span><i class="sw c-anne"></i>Anne IA</span><span><i class="sw c-grupo"></i>Grupo</span><span><i class="sw c-org"></i>Orgânico</span><span><i class="sw c-sem"></i>Sem origem</span></div><div class="scroll"><svg viewBox="0 0 940 310" width="940" height="310" role="img" aria-label="Composicao da venda de cada dia"><line class="grid" x1="64" x2="928" y1="252.0" y2="252.0"/><text class="ax" x="56" y="256.0" text-anchor="end">0</text><line class="grid" x1="64" x2="928" y1="237.2" y2="237.2"/><text class="ax" x="56" y="241.2" text-anchor="end">5k</text><line class="grid" x1="64" x2="928" y1="222.5" y2="222.5"/><text class="ax" x="56" y="226.5" text-anchor="end">10k</text><line class="grid" x1="64" x2="928" y1="207.8" y2="207.8"/><text class="ax" x="56" y="211.8" text-anchor="end">15k</text><line class="grid" x1="64" x2="928" y1="193.0" y2="193.0"/><text class="ax" x="56" y="197.0" text-anchor="end">20k</text><line class="grid" x1="64" x2="928" y1="178.2" y2="178.2"/><text class="ax" x="56" y="182.2" text-anchor="end">25k</text><line class="grid" x1="64" x2="928" y1="163.5" y2="163.5"/><text class="ax" x="56" y="167.5" text-anchor="end">30k</text><line class="grid" x1="64" x2="928" y1="148.8" y2="148.8"/><text class="ax" x="56" y="152.8" text-anchor="end">35k</text><line class="grid" x1="64" x2="928" y1="134.0" y2="134.0"/><text class="ax" x="56" y="138.0" text-anchor="end">40k</text><line class="grid" x1="64" x2="928" y1="119.2" y2="119.2"/><text class="ax" x="56" y="123.2" text-anchor="end">45k</text><line class="grid" x1="64" x2="928" y1="104.5" y2="104.5"/><text class="ax" x="56" y="108.5" text-anchor="end">50k</text><line class="grid" x1="64" x2="928" y1="89.8" y2="89.8"/><text class="ax" x="56" y="93.8" text-anchor="end">55k</text><line class="grid" x1="64" x2="928" y1="75.0" y2="75.0"/><text class="ax" x="56" y="79.0" text-anchor="end">60k</text><line class="grid" x1="64" x2="928" y1="60.2" y2="60.2"/><text class="ax" x="56" y="64.2" text-anchor="end">65k</text><line class="grid" x1="64" x2="928" y1="45.5" y2="45.5"/><text class="ax" x="56" y="49.5" text-anchor="end">70k</text><line class="grid" x1="64" x2="928" y1="30.8" y2="30.8"/><text class="ax" x="56" y="34.8" text-anchor="end">75k</text><line class="grid" x1="64" x2="928" y1="16.0" y2="16.0"/><text class="ax" x="56" y="20.0" text-anchor="end">80k</text><rect class="c-comn" x="70.0" y="231.1" width="16.7" height="20.9"/><rect class="c-comp" x="70.0" y="225.6" width="16.7" height="5.5"/><rect class="c-csp" x="70.0" y="225.2" width="16.7" height="0.3"/><rect class="c-rec" x="70.0" y="223.8" width="16.7" height="1.4"/><rect class="c-site" x="70.0" y="207.5" width="16.7" height="16.4"/><rect class="c-org" x="70.0" y="207.2" width="16.7" height="0.3"/><text class="tot" x="78.4" y="201.2" text-anchor="middle">15,2k</text><text class="dl" x="78.4" y="267" text-anchor="middle">01/09</text><text class="dw" x="78.4" y="279" text-anchor="middle">ter</text><rect class="c-comn" x="98.8" y="241.8" width="16.7" height="10.2"/><rect class="c-comp" x="98.8" y="231.9" width="16.7" height="9.8"/><rect class="c-csn" x="98.8" y="225.4" width="16.7" height="6.6"/><rect class="c-csp" x="98.8" y="225.0" width="16.7" height="0.4"/><rect class="c-rec" x="98.8" y="223.9" width="16.7" height="1.1"/><rect class="c-web" x="98.8" y="223.6" width="16.7" height="0.3"/><rect class="c-sem" x="98.8" y="223.3" width="16.7" height="0.3"/><text class="tot" x="107.2" y="217.3" text-anchor="middle">9,7k</text><text class="dl" x="107.2" y="267" text-anchor="middle">02/09</text><text class="dw" x="107.2" y="279" text-anchor="middle">qua</text><rect class="c-comn" x="127.6" y="250.9" width="16.7" height="1.1"/><rect class="c-comp" x="127.6" y="241.2" width="16.7" height="9.7"/><rect class="c-rec" x="127.6" y="239.0" width="16.7" height="2.2"/><rect class="c-site" x="127.6" y="236.1" width="16.7" height="2.9"/><rect class="c-web" x="127.6" y="232.3" width="16.7" height="3.8"/><rect class="c-traf" x="127.6" y="231.7" width="16.7" height="0.6"/><rect class="c-anne" x="127.6" y="227.1" width="16.7" height="4.6"/><text class="tot" x="136.0" y="221.1" text-anchor="middle">8,4k</text><text class="dl" x="136.0" y="267" text-anchor="middle">03/09</text><text class="dw" x="136.0" y="279" text-anchor="middle">qui</text><rect class="c-comn" x="156.4" y="250.3" width="16.7" height="1.7"/><rect class="c-comp" x="156.4" y="242.4" width="16.7" height="7.9"/><rect class="c-csn" x="156.4" y="242.1" width="16.7" height="0.3"/><rect class="c-csp" x="156.4" y="241.3" width="16.7" height="0.8"/><rect class="c-rec" x="156.4" y="239.1" width="16.7" height="2.3"/><rect class="c-web" x="156.4" y="231.5" width="16.7" height="7.5"/><rect class="c-traf" x="156.4" y="231.1" width="16.7" height="0.5"/><rect class="c-org" x="156.4" y="230.5" width="16.7" height="0.6"/><rect class="c-sem" x="156.4" y="229.7" width="16.7" height="0.8"/><text class="tot" x="164.8" y="223.7" text-anchor="middle">7,6k</text><text class="dl" x="164.8" y="267" text-anchor="middle">04/09</text><text class="dw" x="164.8" y="279" text-anchor="middle">sex</text><rect class="c-comn" x="185.2" y="251.0" width="16.7" height="1.0"/><rect class="c-comp" x="185.2" y="245.7" width="16.7" height="5.2"/><rect class="c-csp" x="185.2" y="244.3" width="16.7" height="1.4"/><rect class="c-rec" x="185.2" y="243.0" width="16.7" height="1.3"/><rect class="c-site" x="185.2" y="235.6" width="16.7" height="7.4"/><rect class="c-web" x="185.2" y="231.9" width="16.7" height="3.7"/><rect class="c-traf" x="185.2" y="231.1" width="16.7" height="0.8"/><rect class="c-anne" x="185.2" y="227.7" width="16.7" height="3.5"/><rect class="c-sem" x="185.2" y="227.6" width="16.7" height="0.0"/><text class="tot" x="193.6" y="221.6" text-anchor="middle">8,3k</text><text class="dl" x="193.6" y="267" text-anchor="middle">05/09</text><text class="dw" x="193.6" y="279" text-anchor="middle">sáb</text><rect class="c-comp" x="214.0" y="248.2" width="16.7" height="3.8"/><rect class="c-rec" x="214.0" y="248.0" width="16.7" height="0.2"/><rect class="c-site" x="214.0" y="245.1" width="16.7" height="2.8"/><rect class="c-web" x="214.0" y="233.9" width="16.7" height="11.2"/><rect class="c-traf" x="214.0" y="232.7" width="16.7" height="1.3"/><rect class="c-org" x="214.0" y="231.8" width="16.7" height="0.9"/><rect class="c-sem" x="214.0" y="231.5" width="16.7" height="0.3"/><text class="tot" x="222.4" y="225.5" text-anchor="middle">6,9k</text><text class="dl" x="222.4" y="267" text-anchor="middle">06/09</text><text class="dw" x="222.4" y="279" text-anchor="middle">dom</text><rect class="c-comn" x="242.8" y="251.1" width="16.7" height="0.9"/><rect class="c-comp" x="242.8" y="246.4" width="16.7" height="4.7"/><rect class="c-csp" x="242.8" y="245.4" width="16.7" height="0.9"/><rect class="c-rec" x="242.8" y="243.8" width="16.7" height="1.7"/><rect class="c-site" x="242.8" y="235.7" width="16.7" height="8.1"/><rect class="c-traf" x="242.8" y="235.5" width="16.7" height="0.2"/><rect class="c-sem" x="242.8" y="235.5" width="16.7" height="0.0"/><text class="tot" x="251.2" y="229.5" text-anchor="middle">5,6k</text><text class="dl" x="251.2" y="267" text-anchor="middle">07/09</text><text class="dw" x="251.2" y="279" text-anchor="middle">seg</text><rect class="c-comn" x="271.6" y="245.1" width="16.7" height="6.9"/><rect class="c-comp" x="271.6" y="234.2" width="16.7" height="10.9"/><rect class="c-csp" x="271.6" y="232.5" width="16.7" height="1.7"/><rect class="c-rec" x="271.6" y="229.1" width="16.7" height="3.3"/><rect class="c-site" x="271.6" y="218.6" width="16.7" height="10.5"/><rect class="c-web" x="271.6" y="195.8" width="16.7" height="22.8"/><rect class="c-traf" x="271.6" y="195.3" width="16.7" height="0.5"/><rect class="c-org" x="271.6" y="194.4" width="16.7" height="0.9"/><rect class="c-sem" x="271.6" y="194.3" width="16.7" height="0.1"/><text class="tot" x="280.0" y="188.3" text-anchor="middle">19,6k</text><text class="dl" x="280.0" y="267" text-anchor="middle">08/09</text><text class="dw" x="280.0" y="279" text-anchor="middle">ter</text><rect class="c-comn" x="300.4" y="232.2" width="16.7" height="19.8"/><rect class="c-comp" x="300.4" y="225.3" width="16.7" height="6.9"/><rect class="c-rec" x="300.4" y="216.1" width="16.7" height="9.2"/><rect class="c-site" x="300.4" y="203.6" width="16.7" height="12.5"/><rect class="c-web" x="300.4" y="184.4" width="16.7" height="19.2"/><rect class="c-traf" x="300.4" y="184.3" width="16.7" height="0.1"/><rect class="c-anne" x="300.4" y="177.3" width="16.7" height="6.9"/><rect class="c-org" x="300.4" y="176.2" width="16.7" height="1.1"/><rect class="c-sem" x="300.4" y="175.9" width="16.7" height="0.3"/><text class="tot" x="308.8" y="169.9" text-anchor="middle">25,8k</text><text class="dl" x="308.8" y="267" text-anchor="middle">09/09</text><text class="dw" x="308.8" y="279" text-anchor="middle">qua</text><rect class="c-comn" x="329.2" y="250.5" width="16.7" height="1.5"/><rect class="c-comp" x="329.2" y="244.6" width="16.7" height="5.9"/><rect class="c-csp" x="329.2" y="243.4" width="16.7" height="1.2"/><rect class="c-rec" x="329.2" y="241.3" width="16.7" height="2.1"/><rect class="c-site" x="329.2" y="229.8" width="16.7" height="11.4"/><rect class="c-web" x="329.2" y="226.4" width="16.7" height="3.5"/><rect class="c-traf" x="329.2" y="225.8" width="16.7" height="0.6"/><rect class="c-anne" x="329.2" y="224.1" width="16.7" height="1.7"/><rect class="c-org" x="329.2" y="223.7" width="16.7" height="0.3"/><rect class="c-sem" x="329.2" y="223.2" width="16.7" height="0.6"/><text class="tot" x="337.6" y="217.2" text-anchor="middle">9,8k</text><text class="dl" x="337.6" y="267" text-anchor="middle">10/09</text><text class="dw" x="337.6" y="279" text-anchor="middle">qui</text><rect class="c-comn" x="358.0" y="243.9" width="16.7" height="8.1"/><rect class="c-comp" x="358.0" y="239.2" width="16.7" height="4.7"/><rect class="c-csp" x="358.0" y="237.4" width="16.7" height="1.9"/><rect class="c-rec" x="358.0" y="235.2" width="16.7" height="2.2"/><rect class="c-site" x="358.0" y="232.2" width="16.7" height="2.9"/><rect class="c-web" x="358.0" y="231.9" width="16.7" height="0.3"/><rect class="c-traf" x="358.0" y="231.9" width="16.7" height="0.0"/><rect class="c-anne" x="358.0" y="228.4" width="16.7" height="3.5"/><rect class="c-sem" x="358.0" y="228.4" width="16.7" height="0.0"/><text class="tot" x="366.4" y="222.4" text-anchor="middle">8,0k</text><text class="dl" x="366.4" y="267" text-anchor="middle">11/09</text><text class="dw" x="366.4" y="279" text-anchor="middle">sex</text><rect class="c-comn" x="386.8" y="247.3" width="16.7" height="4.7"/><rect class="c-comp" x="386.8" y="242.1" width="16.7" height="5.1"/><rect class="c-csp" x="386.8" y="241.6" width="16.7" height="0.5"/><rect class="c-rec" x="386.8" y="241.2" width="16.7" height="0.5"/><rect class="c-site" x="386.8" y="232.6" width="16.7" height="8.6"/><rect class="c-web" x="386.8" y="225.9" width="16.7" height="6.6"/><rect class="c-org" x="386.8" y="225.6" width="16.7" height="0.3"/><rect class="c-sem" x="386.8" y="221.0" width="16.7" height="4.7"/><text class="tot" x="395.2" y="215.0" text-anchor="middle">10,5k</text><text class="dl" x="395.2" y="267" text-anchor="middle">12/09</text><text class="dw" x="395.2" y="279" text-anchor="middle">sáb</text><rect class="c-comp" x="415.6" y="250.8" width="16.7" height="1.2"/><rect class="c-csp" x="415.6" y="250.4" width="16.7" height="0.4"/><rect class="c-rec" x="415.6" y="248.8" width="16.7" height="1.5"/><rect class="c-site" x="415.6" y="241.2" width="16.7" height="7.7"/><rect class="c-web" x="415.6" y="228.1" width="16.7" height="13.1"/><rect class="c-traf" x="415.6" y="226.8" width="16.7" height="1.3"/><rect class="c-anne" x="415.6" y="223.7" width="16.7" height="3.1"/><rect class="c-sem" x="415.6" y="223.5" width="16.7" height="0.2"/><text class="tot" x="424.0" y="217.5" text-anchor="middle">9,6k</text><text class="dl" x="424.0" y="267" text-anchor="middle">13/09</text><text class="dw" x="424.0" y="279" text-anchor="middle">dom</text><rect class="c-comn" x="444.4" y="249.0" width="16.7" height="3.0"/><rect class="c-comp" x="444.4" y="238.4" width="16.7" height="10.6"/><rect class="c-csn" x="444.4" y="224.4" width="16.7" height="13.9"/><rect class="c-csp" x="444.4" y="224.0" width="16.7" height="0.5"/><rect class="c-rec" x="444.4" y="216.6" width="16.7" height="7.4"/><rect class="c-site" x="444.4" y="211.5" width="16.7" height="5.1"/><rect class="c-web" x="444.4" y="200.3" width="16.7" height="11.2"/><rect class="c-traf" x="444.4" y="199.9" width="16.7" height="0.4"/><rect class="c-org" x="444.4" y="194.2" width="16.7" height="5.7"/><rect class="c-sem" x="444.4" y="193.8" width="16.7" height="0.4"/><text class="tot" x="452.8" y="187.8" text-anchor="middle">19,7k</text><text class="dl" x="452.8" y="267" text-anchor="middle">14/09</text><text class="dw" x="452.8" y="279" text-anchor="middle">seg</text><rect class="c-comn" x="473.2" y="245.8" width="16.7" height="6.2"/><rect class="c-comp" x="473.2" y="240.5" width="16.7" height="5.3"/><rect class="c-csp" x="473.2" y="238.6" width="16.7" height="1.9"/><rect class="c-rec" x="473.2" y="235.7" width="16.7" height="2.9"/><rect class="c-site" x="473.2" y="231.0" width="16.7" height="4.7"/><rect class="c-web" x="473.2" y="223.3" width="16.7" height="7.7"/><rect class="c-anne" x="473.2" y="221.5" width="16.7" height="1.8"/><rect class="c-sem" x="473.2" y="216.3" width="16.7" height="5.3"/><text class="tot" x="481.6" y="210.3" text-anchor="middle">12,1k</text><text class="dl" x="481.6" y="267" text-anchor="middle">15/09</text><text class="dw" x="481.6" y="279" text-anchor="middle">ter</text><rect class="c-comn" x="502.0" y="237.4" width="16.7" height="14.6"/><rect class="c-comp" x="502.0" y="226.9" width="16.7" height="10.5"/><rect class="c-csn" x="502.0" y="226.4" width="16.7" height="0.5"/><rect class="c-rec" x="502.0" y="222.5" width="16.7" height="3.9"/><rect class="c-site" x="502.0" y="213.1" width="16.7" height="9.4"/><rect class="c-traf" x="502.0" y="213.1" width="16.7" height="0.0"/><rect class="c-sem" x="502.0" y="212.6" width="16.7" height="0.4"/><text class="tot" x="510.4" y="206.6" text-anchor="middle">13,3k</text><text class="dl" x="510.4" y="267" text-anchor="middle">16/09</text><text class="dw" x="510.4" y="279" text-anchor="middle">qua</text><rect class="c-comn" x="530.8" y="239.0" width="16.7" height="13.0"/><rect class="c-comp" x="530.8" y="237.4" width="16.7" height="1.6"/><rect class="c-csp" x="530.8" y="236.8" width="16.7" height="0.6"/><rect class="c-rec" x="530.8" y="235.8" width="16.7" height="1.0"/><rect class="c-site" x="530.8" y="228.2" width="16.7" height="7.7"/><rect class="c-web" x="530.8" y="225.6" width="16.7" height="2.6"/><rect class="c-traf" x="530.8" y="224.3" width="16.7" height="1.3"/><rect class="c-anne" x="530.8" y="222.5" width="16.7" height="1.7"/><rect class="c-sem" x="530.8" y="219.6" width="16.7" height="2.9"/><text class="tot" x="539.2" y="213.6" text-anchor="middle">11,0k</text><text class="dl" x="539.2" y="267" text-anchor="middle">17/09</text><text class="dw" x="539.2" y="279" text-anchor="middle">qui</text><rect class="c-comn" x="559.6" y="239.2" width="16.7" height="12.8"/><rect class="c-comp" x="559.6" y="230.5" width="16.7" height="8.6"/><rect class="c-rec" x="559.6" y="229.9" width="16.7" height="0.6"/><rect class="c-site" x="559.6" y="225.4" width="16.7" height="4.5"/><rect class="c-web" x="559.6" y="220.1" width="16.7" height="5.2"/><rect class="c-traf" x="559.6" y="218.4" width="16.7" height="1.7"/><rect class="c-sem" x="559.6" y="215.7" width="16.7" height="2.7"/><text class="tot" x="568.0" y="209.7" text-anchor="middle">12,3k</text><text class="dl" x="568.0" y="267" text-anchor="middle">18/09</text><text class="dw" x="568.0" y="279" text-anchor="middle">sex</text><rect class="c-comp" x="588.4" y="247.8" width="16.7" height="4.2"/><rect class="c-csp" x="588.4" y="247.4" width="16.7" height="0.3"/><rect class="c-rec" x="588.4" y="245.3" width="16.7" height="2.1"/><rect class="c-site" x="588.4" y="234.8" width="16.7" height="10.5"/><rect class="c-web" x="588.4" y="232.1" width="16.7" height="2.6"/><rect class="c-traf" x="588.4" y="231.3" width="16.7" height="0.9"/><rect class="c-sem" x="588.4" y="228.6" width="16.7" height="2.6"/><text class="tot" x="596.8" y="222.6" text-anchor="middle">7,9k</text><text class="dl" x="596.8" y="267" text-anchor="middle">19/09</text><text class="dw" x="596.8" y="279" text-anchor="middle">sáb</text><rect class="c-comp" x="617.2" y="248.6" width="16.7" height="3.4"/><rect class="c-rec" x="617.2" y="246.8" width="16.7" height="1.8"/><rect class="c-traf" x="617.2" y="245.9" width="16.7" height="0.8"/><rect class="c-sem" x="617.2" y="243.3" width="16.7" height="2.7"/><text class="tot" x="625.6" y="237.3" text-anchor="middle">3,0k</text><text class="dl" x="625.6" y="267" text-anchor="middle">20/09</text><text class="dw" x="625.6" y="279" text-anchor="middle">dom</text><rect class="c-comn" x="646.0" y="249.1" width="16.7" height="2.9"/><rect class="c-comp" x="646.0" y="243.1" width="16.7" height="6.0"/><rect class="c-csp" x="646.0" y="242.7" width="16.7" height="0.5"/><rect class="c-rec" x="646.0" y="236.6" width="16.7" height="6.1"/><rect class="c-site" x="646.0" y="223.3" width="16.7" height="13.3"/><rect class="c-web" x="646.0" y="216.9" width="16.7" height="6.3"/><rect class="c-traf" x="646.0" y="216.5" width="16.7" height="0.4"/><rect class="c-sem" x="646.0" y="212.7" width="16.7" height="3.8"/><text class="tot" x="654.4" y="206.7" text-anchor="middle">13,3k</text><text class="dl" x="654.4" y="267" text-anchor="middle">21/09</text><text class="dw" x="654.4" y="279" text-anchor="middle">seg</text><rect class="c-comn" x="674.8" y="202.6" width="16.7" height="49.4"/><rect class="c-comp" x="674.8" y="195.5" width="16.7" height="7.1"/><rect class="c-csn" x="674.8" y="191.3" width="16.7" height="4.1"/><rect class="c-csp" x="674.8" y="190.6" width="16.7" height="0.7"/><rect class="c-rec" x="674.8" y="187.8" width="16.7" height="2.8"/><rect class="c-site" x="674.8" y="182.1" width="16.7" height="5.8"/><rect class="c-web" x="674.8" y="167.8" width="16.7" height="14.3"/><rect class="c-traf" x="674.8" y="167.7" width="16.7" height="0.1"/><rect class="c-grupo" x="674.8" y="163.2" width="16.7" height="4.4"/><rect class="c-sem" x="674.8" y="162.8" width="16.7" height="0.4"/><text class="tot" x="683.2" y="156.8" text-anchor="middle">30,2k</text><text class="dl" x="683.2" y="267" text-anchor="middle">22/09</text><text class="dw" x="683.2" y="279" text-anchor="middle">ter</text><rect class="c-comn" x="703.6" y="227.4" width="16.7" height="24.6"/><rect class="c-comp" x="703.6" y="224.2" width="16.7" height="3.3"/><rect class="c-rec" x="703.6" y="222.0" width="16.7" height="2.2"/><rect class="c-site" x="703.6" y="205.0" width="16.7" height="16.9"/><rect class="c-web" x="703.6" y="202.5" width="16.7" height="2.5"/><rect class="c-traf" x="703.6" y="202.1" width="16.7" height="0.4"/><rect class="c-anne" x="703.6" y="198.6" width="16.7" height="3.5"/><rect class="c-sem" x="703.6" y="195.7" width="16.7" height="2.9"/><text class="tot" x="712.0" y="189.7" text-anchor="middle">19,1k</text><text class="dl" x="712.0" y="267" text-anchor="middle">23/09</text><text class="dw" x="712.0" y="279" text-anchor="middle">qua</text><rect class="c-comn" x="732.4" y="241.5" width="16.7" height="10.5"/><rect class="c-comp" x="732.4" y="235.9" width="16.7" height="5.6"/><rect class="c-csn" x="732.4" y="235.6" width="16.7" height="0.3"/><rect class="c-csp" x="732.4" y="235.4" width="16.7" height="0.3"/><rect class="c-rec" x="732.4" y="234.2" width="16.7" height="1.2"/><rect class="c-site" x="732.4" y="229.5" width="16.7" height="4.7"/><rect class="c-web" x="732.4" y="226.5" width="16.7" height="2.9"/><rect class="c-traf" x="732.4" y="226.1" width="16.7" height="0.4"/><rect class="c-sem" x="732.4" y="223.4" width="16.7" height="2.7"/><text class="tot" x="740.8" y="217.4" text-anchor="middle">9,7k</text><text class="dl" x="740.8" y="267" text-anchor="middle">24/09</text><text class="dw" x="740.8" y="279" text-anchor="middle">qui</text><rect class="c-comn" x="761.2" y="249.5" width="16.7" height="2.5"/><rect class="c-comp" x="761.2" y="242.0" width="16.7" height="7.6"/><rect class="c-csp" x="761.2" y="240.8" width="16.7" height="1.2"/><rect class="c-rec" x="761.2" y="238.2" width="16.7" height="2.6"/><rect class="c-site" x="761.2" y="235.3" width="16.7" height="2.9"/><rect class="c-traf" x="761.2" y="234.8" width="16.7" height="0.4"/><rect class="c-anne" x="761.2" y="230.1" width="16.7" height="4.7"/><text class="tot" x="769.6" y="224.1" text-anchor="middle">7,4k</text><text class="dl" x="769.6" y="267" text-anchor="middle">25/09</text><text class="dw" x="769.6" y="279" text-anchor="middle">sex</text><rect class="c-comn" x="790.0" y="246.4" width="16.7" height="5.6"/><rect class="c-comp" x="790.0" y="238.1" width="16.7" height="8.3"/><rect class="c-rec" x="790.0" y="236.9" width="16.7" height="1.1"/><rect class="c-site" x="790.0" y="232.2" width="16.7" height="4.7"/><rect class="c-web" x="790.0" y="225.7" width="16.7" height="6.5"/><rect class="c-traf" x="790.0" y="224.9" width="16.7" height="0.9"/><text class="tot" x="798.4" y="218.9" text-anchor="middle">9,2k</text><text class="dl" x="798.4" y="267" text-anchor="middle">26/09</text><text class="dw" x="798.4" y="279" text-anchor="middle">sáb</text><rect class="c-comn" x="818.8" y="245.7" width="16.7" height="6.3"/><rect class="c-comp" x="818.8" y="229.4" width="16.7" height="16.4"/><rect class="c-csp" x="818.8" y="227.1" width="16.7" height="2.3"/><rect class="c-rec" x="818.8" y="226.3" width="16.7" height="0.7"/><rect class="c-site" x="818.8" y="223.4" width="16.7" height="2.9"/><rect class="c-web" x="818.8" y="219.0" width="16.7" height="4.4"/><text class="tot" x="827.2" y="213.0" text-anchor="middle">11,2k</text><text class="dl" x="827.2" y="267" text-anchor="middle">27/09</text><text class="dw" x="827.2" y="279" text-anchor="middle">dom</text><rect class="c-comn" x="847.6" y="57.1" width="16.7" height="194.9"/><rect class="c-comp" x="847.6" y="45.1" width="16.7" height="12.0"/><rect class="c-csp" x="847.6" y="41.9" width="16.7" height="3.3"/><rect class="c-rec" x="847.6" y="39.5" width="16.7" height="2.4"/><rect class="c-web" x="847.6" y="29.0" width="16.7" height="10.6"/><rect class="c-sem" x="847.6" y="16.7" width="16.7" height="12.2"/><text class="tot" x="856.0" y="10.7" text-anchor="middle">79,7k</text><text class="dl" x="856.0" y="267" text-anchor="middle">28/09</text><text class="dw" x="856.0" y="279" text-anchor="middle">seg</text><rect class="c-comn" x="876.4" y="169.1" width="16.7" height="82.9"/><rect class="c-comp" x="876.4" y="144.3" width="16.7" height="24.8"/><rect class="c-csn" x="876.4" y="141.4" width="16.7" height="2.9"/><rect class="c-csp" x="876.4" y="140.2" width="16.7" height="1.2"/><rect class="c-rec" x="876.4" y="137.1" width="16.7" height="3.0"/><rect class="c-site" x="876.4" y="129.5" width="16.7" height="7.6"/><rect class="c-web" x="876.4" y="129.2" width="16.7" height="0.3"/><rect class="c-anne" x="876.4" y="116.9" width="16.7" height="12.3"/><rect class="c-sem" x="876.4" y="87.6" width="16.7" height="29.4"/><text class="tot" x="884.8" y="81.6" text-anchor="middle">55,7k</text><text class="dl" x="884.8" y="267" text-anchor="middle">29/09</text><text class="dw" x="884.8" y="279" text-anchor="middle">ter</text><rect class="c-comn" x="905.2" y="169.4" width="16.7" height="82.6"/><rect class="c-comp" x="905.2" y="158.9" width="16.7" height="10.5"/><rect class="c-csn" x="905.2" y="149.9" width="16.7" height="9.0"/><rect class="c-csp" x="905.2" y="149.7" width="16.7" height="0.2"/><rect class="c-rec" x="905.2" y="147.7" width="16.7" height="1.9"/><rect class="c-site" x="905.2" y="144.9" width="16.7" height="2.8"/><rect class="c-anne" x="905.2" y="131.6" width="16.7" height="13.3"/><rect class="c-sem" x="905.2" y="79.6" width="16.7" height="52.1"/><text class="tot" x="913.6" y="73.6" text-anchor="middle">58,4k</text><text class="dl" x="913.6" y="267" text-anchor="middle">30/09</text><text class="dw" x="913.6" y="279" text-anchor="middle">qua</text><line class="base" x1="64" x2="928" y1="252.0" y2="252.0"/></svg></div></div>
+    <div class="scroll"><table>
+        <thead><tr><th class="l">Dia</th><th>Comercial nova</th><th>Comercial parcela</th><th>CS nova</th><th>CS parcela</th><th>Recorrência s/ dono</th><th>Site / blindado</th><th>Webinário</th><th>Tráfego direto</th><th>Anne IA</th><th>Grupo</th><th>Orgânico</th><th>Sem origem</th><th>Total líq.</th><th>Vendas</th></tr></thead>
+        <tbody><tr><td class="l">01/09 · ter</td><td class="num">7.083,24</td><td class="num">1.880,28</td><td class="num"><span class="zero">—</span></td><td class="num">106,04</td><td class="num">475,02</td><td class="num">5.549,65</td><td class="num"><span class="zero">—</span></td><td class="num"><span class="zero">—</span></td><td class="num"><span class="zero">—</span></td><td class="num"><span class="zero">—</span></td><td class="num">95,49</td><td class="num"><span class="zero">—</span></td><td class="num"><b>15.189,72</b></td><td class="num">36</td></tr><tr><td class="l">02/09 · qua</td><td class="num">3.469,08</td><td class="num">3.331,58</td><td class="num">2.224,94</td><td class="num">122,78</td><td class="num">383,89</td><td class="num"><span class="zero">—</span></td><td class="num">106,10</td><td class="num"><span class="zero">—</span></td><td class="num"><span class="zero">—</span></td><td class="num"><span class="zero">—</span></td><td class="num"><span class="zero">—</span></td><td class="num">101,93</td><td class="num"><b>9.740,30</b></td><td class="num">38</td></tr><tr><td class="l">03/09 · qui</td><td class="num">380,08</td><td class="num">3.283,92</td><td class="num"><span class="zero">—</span></td><td class="num"><span class="zero">—</span></td><td class="num">751,38</td><td class="num">976,59</td><td class="num">1.299,97</td><td class="num">187,44</td><td class="num">1.563,30</td><td class="num"><span class="zero">—</span></td><td class="num"><span class="zero">—</span></td><td class="num"><span class="zero">—</span></td><td class="num"><b>8.442,68</b></td><td class="num">32</td></tr><tr><td class="l">04/09 · sex</td><td class="num">570,12</td><td class="num">2.673,14</td><td class="num">97,67</td><td class="num">279,06</td><td class="num">763,48</td><td class="num"><span class="zero">—</span></td><td class="num">2.550,55</td><td class="num">160,52</td><td class="num"><span class="zero">—</span></td><td class="num"><span class="zero">—</span></td><td class="num">191,39</td><td class="num">285,11</td><td class="num"><b>7.571,04</b></td><td class="num">46</td></tr><tr><td class="l">05/09 · sáb</td><td class="num">354,89</td><td class="num">1.770,74</td><td class="num"><span class="zero">—</span></td><td class="num">480,68</td><td class="num">452,34</td><td class="num">2.511,89</td><td class="num">1.247,95</td><td class="num">263,03</td><td class="num">1.170,11</td><td class="num"><span class="zero">—</span></td><td class="num"><span class="zero">—</span></td><td class="num">7,05</td><td class="num"><b>8.258,68</b></td><td class="num">34</td></tr><tr><td class="l">06/09 · dom</td><td class="num"><span class="zero">—</span></td><td class="num">1.288,94</td><td class="num"><span class="zero">—</span></td><td class="num"><span class="zero">—</span></td><td class="num">80,94</td><td class="num">958,72</td><td class="num">3.795,87</td><td class="num">423,82</td><td class="num"><span class="zero">—</span></td><td class="num"><span class="zero">—</span></td><td class="num">295,78</td><td class="num">97,67</td><td class="num"><b>6.941,74</b></td><td class="num">27</td></tr><tr><td class="l">07/09 · seg</td><td class="num">313,59</td><td class="num">1.601,42</td><td class="num"><span class="zero">—</span></td><td class="num">312,53</td><td class="num">566,42</td><td class="num">2.729,82</td><td class="num"><span class="zero">—</span></td><td class="num">66,80</td><td class="num"><span class="zero">—</span></td><td class="num"><span class="zero">—</span></td><td class="num"><span class="zero">—</span></td><td class="num">7,05</td><td class="num"><b>5.597,63</b></td><td class="num">26</td></tr><tr><td class="l">08/09 · ter</td><td class="num">2.333,49</td><td class="num">3.706,65</td><td class="num"><span class="zero">—</span></td><td class="num">583,56</td><td class="num">1.128,27</td><td class="num">3.558,67</td><td class="num">7.729,57</td><td class="num">183,70</td><td class="num"><span class="zero">—</span></td><td class="num"><span class="zero">—</span></td><td class="num">290,52</td><td class="num">46,67</td><td class="num"><b>19.561,10</b></td><td class="num">61</td></tr><tr><td class="l">09/09 · qua</td><td class="num">6.727,20</td><td class="num">2.330,20</td><td class="num"><span class="zero">—</span></td><td class="num"><span class="zero">—</span></td><td class="num">3.128,79</td><td class="num">4.231,83</td><td class="num">6.512,16</td><td class="num">33,40</td><td class="num">2.347,29</td><td class="num"><span class="zero">—</span></td><td class="num">385,88</td><td class="num">107,82</td><td class="num"><b>25.804,57</b></td><td class="num">58</td></tr><tr><td class="l">10/09 · qui</td><td class="num">516,26</td><td class="num">1.998,53</td><td class="num"><span class="zero">—</span></td><td class="num">416,56</td><td class="num">707,75</td><td class="num">3.879,28</td><td class="num">1.172,41</td><td class="num">192,85</td><td class="num">581,95</td><td class="num"><span class="zero">—</span></td><td class="num">114,37</td><td class="num">187,44</td><td class="num"><b>9.767,40</b></td><td class="num">34</td></tr><tr><td class="l">11/09 · sex</td><td class="num">2.741,63</td><td class="num">1.586,01</td><td class="num"><span class="zero">—</span></td><td class="num">637,15</td><td class="num">733,63</td><td class="num">998,72</td><td class="num">106,10</td><td class="num">7,04</td><td class="num">1.180,81</td><td class="num"><span class="zero">—</span></td><td class="num"><span class="zero">—</span></td><td class="num">7,05</td><td class="num"><b>7.998,14</b></td><td class="num">31</td></tr><tr><td class="l">12/09 · sáb</td><td class="num">1.601,23</td><td class="num">1.743,86</td><td class="num"><span class="zero">—</span></td><td class="num">163,95</td><td class="num">168,26</td><td class="num">2.908,90</td><td class="num">2.252,34</td><td class="num"><span class="zero">—</span></td><td class="num"><span class="zero">—</span></td><td class="num"><span class="zero">—</span></td><td class="num">97,67</td><td class="num">1.579,43</td><td class="num"><b>10.515,64</b></td><td class="num">25</td></tr><tr><td class="l">13/09 · dom</td><td class="num"><span class="zero">—</span></td><td class="num">417,88</td><td class="num"><span class="zero">—</span></td><td class="num">139,71</td><td class="num">516,40</td><td class="num">2.599,95</td><td class="num">4.441,54</td><td class="num">425,77</td><td class="num">1.046,19</td><td class="num"><span class="zero">—</span></td><td class="num"><span class="zero">—</span></td><td class="num">59,72</td><td class="num"><b>9.647,16</b></td><td class="num">22</td></tr><tr><td class="l">14/09 · seg</td><td class="num">1.023,12</td><td class="num">3.592,47</td><td class="num">4.724,27</td><td class="num">164,62</td><td class="num">2.496,35</td><td class="num">1.732,43</td><td class="num">3.795,87</td><td class="num">147,89</td><td class="num"><span class="zero">—</span></td><td class="num"><span class="zero">—</span></td><td class="num">1.924,75</td><td class="num">141,92</td><td class="num"><b>19.743,69</b></td><td class="num">54</td></tr><tr><td class="l">15/09 · ter</td><td class="num">2.092,29</td><td class="num">1.799,65</td><td class="num"><span class="zero">—</span></td><td class="num">654,97</td><td class="num">983,54</td><td class="num">1.601,23</td><td class="num">2.599,94</td><td class="num"><span class="zero">—</span></td><td class="num">597,03</td><td class="num"><span class="zero">—</span></td><td class="num"><span class="zero">—</span></td><td class="num">1.779,91</td><td class="num"><b>12.108,56</b></td><td class="num">35</td></tr><tr><td class="l">16/09 · qua</td><td class="num">4.959,35</td><td class="num">3.553,66</td><td class="num">164,85</td><td class="num"><span class="zero">—</span></td><td class="num">1.307,23</td><td class="num">3.202,46</td><td class="num"><span class="zero">—</span></td><td class="num">11,18</td><td class="num"><span class="zero">—</span></td><td class="num"><span class="zero">—</span></td><td class="num"><span class="zero">—</span></td><td class="num">147,89</td><td class="num"><b>13.346,62</b></td><td class="num">43</td></tr><tr><td class="l">17/09 · qui</td><td class="num">4.413,96</td><td class="num">542,99</td><td class="num"><span class="zero">—</span></td><td class="num">190,13</td><td class="num">329,24</td><td class="num">2.599,95</td><td class="num">875,65</td><td class="num">448,88</td><td class="num">583,78</td><td class="num"><span class="zero">—</span></td><td class="num"><span class="zero">—</span></td><td class="num">998,72</td><td class="num"><b>10.983,30</b></td><td class="num">24</td></tr><tr><td class="l">18/09 · sex</td><td class="num">4.348,52</td><td class="num">2.931,94</td><td class="num"><span class="zero">—</span></td><td class="num"><span class="zero">—</span></td><td class="num">212,09</td><td class="num">1.537,18</td><td class="num">1.771,21</td><td class="num">584,46</td><td class="num"><span class="zero">—</span></td><td class="num"><span class="zero">—</span></td><td class="num"><span class="zero">—</span></td><td class="num">909,77</td><td class="num"><b>12.295,17</b></td><td class="num">33</td></tr><tr><td class="l">19/09 · sáb</td><td class="num"><span class="zero">—</span></td><td class="num">1.439,33</td><td class="num"><span class="zero">—</span></td><td class="num">109,82</td><td class="num">714,32</td><td class="num">3.573,49</td><td class="num">898,29</td><td class="num">295,78</td><td class="num"><span class="zero">—</span></td><td class="num"><span class="zero">—</span></td><td class="num"><span class="zero">—</span></td><td class="num">892,78</td><td class="num"><b>7.923,81</b></td><td class="num">22</td></tr><tr><td class="l">20/09 · dom</td><td class="num"><span class="zero">—</span></td><td class="num">1.162,79</td><td class="num"><span class="zero">—</span></td><td class="num"><span class="zero">—</span></td><td class="num">611,70</td><td class="num"><span class="zero">—</span></td><td class="num"><span class="zero">—</span></td><td class="num">283,84</td><td class="num"><span class="zero">—</span></td><td class="num"><span class="zero">—</span></td><td class="num"><span class="zero">—</span></td><td class="num">905,64</td><td class="num"><b>2.963,97</b></td><td class="num">16</td></tr><tr><td class="l">21/09 · seg</td><td class="num">967,53</td><td class="num">2.040,93</td><td class="num"><span class="zero">—</span></td><td class="num">157,95</td><td class="num">2.066,49</td><td class="num">4.512,84</td><td class="num">2.146,24</td><td class="num">147,89</td><td class="num"><span class="zero">—</span></td><td class="num"><span class="zero">—</span></td><td class="num"><span class="zero">—</span></td><td class="num">1.283,55</td><td class="num"><b>13.323,42</b></td><td class="num">39</td></tr><tr><td class="l">22/09 · ter</td><td class="num">16.753,21</td><td class="num">2.416,05</td><td class="num">1.401,29</td><td class="num">235,56</td><td class="num">945,56</td><td class="num">1.957,44</td><td class="num">4.847,13</td><td class="num">33,54</td><td class="num"><span class="zero">—</span></td><td class="num">1.500,82</td><td class="num"><span class="zero">—</span></td><td class="num">141,92</td><td class="num"><b>30.232,52</b></td><td class="num">50</td></tr><tr><td class="l">23/09 · qua</td><td class="num">8.337,04</td><td class="num">1.103,07</td><td class="num"><span class="zero">—</span></td><td class="num"><span class="zero">—</span></td><td class="num">740,11</td><td class="num">5.738,36</td><td class="num">862,31</td><td class="num">141,92</td><td class="num">1.190,19</td><td class="num"><span class="zero">—</span></td><td class="num"><span class="zero">—</span></td><td class="num">967,53</td><td class="num"><b>19.080,53</b></td><td class="num">34</td></tr><tr><td class="l">24/09 · qui</td><td class="num">3.544,66</td><td class="num">1.902,55</td><td class="num">97,67</td><td class="num">93,68</td><td class="num">395,53</td><td class="num">1.601,23</td><td class="num">998,72</td><td class="num">141,92</td><td class="num"><span class="zero">—</span></td><td class="num"><span class="zero">—</span></td><td class="num"><span class="zero">—</span></td><td class="num">909,77</td><td class="num"><b>9.685,73</b></td><td class="num">33</td></tr><tr><td class="l">25/09 · sex</td><td class="num">838,52</td><td class="num">2.562,06</td><td class="num"><span class="zero">—</span></td><td class="num">403,35</td><td class="num">864,49</td><td class="num">998,72</td><td class="num"><span class="zero">—</span></td><td class="num">147,89</td><td class="num">1.601,23</td><td class="num"><span class="zero">—</span></td><td class="num"><span class="zero">—</span></td><td class="num"><span class="zero">—</span></td><td class="num"><b>7.416,26</b></td><td class="num">32</td></tr><tr><td class="l">26/09 · sáb</td><td class="num">1.908,75</td><td class="num">2.817,43</td><td class="num"><span class="zero">—</span></td><td class="num"><span class="zero">—</span></td><td class="num">379,37</td><td class="num">1.601,23</td><td class="num">2.198,26</td><td class="num">289,81</td><td class="num"><span class="zero">—</span></td><td class="num"><span class="zero">—</span></td><td class="num"><span class="zero">—</span></td><td class="num"><span class="zero">—</span></td><td class="num"><b>9.194,85</b></td><td class="num">27</td></tr><tr><td class="l">27/09 · dom</td><td class="num">2.127,71</td><td class="num">5.544,94</td><td class="num"><span class="zero">—</span></td><td class="num">781,79</td><td class="num">244,89</td><td class="num">998,72</td><td class="num">1.500,82</td><td class="num"><span class="zero">—</span></td><td class="num"><span class="zero">—</span></td><td class="num"><span class="zero">—</span></td><td class="num"><span class="zero">—</span></td><td class="num"><span class="zero">—</span></td><td class="num"><b>11.198,87</b></td><td class="num">41</td></tr><tr><td class="l">28/09 · seg</td><td class="num">66.064,55</td><td class="num">4.061,42</td><td class="num"><span class="zero">—</span></td><td class="num">1.103,27</td><td class="num">797,17</td><td class="num"><span class="zero">—</span></td><td class="num">3.583,59</td><td class="num"><span class="zero">—</span></td><td class="num"><span class="zero">—</span></td><td class="num"><span class="zero">—</span></td><td class="num"><span class="zero">—</span></td><td class="num">4.138,11</td><td class="num"><b>79.748,11</b></td><td class="num">130</td></tr><tr><td class="l">29/09 · ter</td><td class="num">28.106,73</td><td class="num">8.411,80</td><td class="num">973,54</td><td class="num">413,29</td><td class="num">1.032,92</td><td class="num">2.578,03</td><td class="num">106,10</td><td class="num"><span class="zero">—</span></td><td class="num">4.161,18</td><td class="num"><span class="zero">—</span></td><td class="num"><span class="zero">—</span></td><td class="num">9.950,12</td><td class="num"><b>55.733,71</b></td><td class="num">114</td></tr><tr><td class="l">30/09 · qua</td><td class="num">28.016,81</td><td class="num">3.556,37</td><td class="num">3.040,30</td><td class="num">77,18</td><td class="num">649,15</td><td class="num">958,72</td><td class="num"><span class="zero">—</span></td><td class="num"><span class="zero">—</span></td><td class="num">4.503,63</td><td class="num"><span class="zero">—</span></td><td class="num"><span class="zero">—</span></td><td class="num">17.646,82</td><td class="num"><b>58.448,98</b></td><td class="num">101</td></tr><tr class="total"><td class="l">Mês</td><td class="num">199.593,56</td><td class="num">77.052,60</td><td class="num">12.724,53</td><td class="num">7.627,63</td><td class="num">24.626,72</td><td class="num">66.096,05</td><td class="num">57.398,69</td><td class="num">4.619,37</td><td class="num">20.526,69</td><td class="num">1.500,82</td><td class="num">3.395,85</td><td class="num">43.301,39</td><td class="num">518.463,90</td><td class="num">1298</td></tr><tr class="sub"><td class="l">% do mês</td><td class="num">38,5%</td><td class="num">14,9%</td><td class="num">2,5%</td><td class="num">1,5%</td><td class="num">4,7%</td><td class="num">12,7%</td><td class="num">11,1%</td><td class="num">0,9%</td><td class="num">4,0%</td><td class="num">0,3%</td><td class="num">0,7%</td><td class="num">8,4%</td><td class="num">100%</td><td class="num zero">—</td></tr></tbody></table></div>
+    <p class="lede">O time comercial respondeu por R$ 276.646,16 do mês: R$ 199.593,56 em vendas novas e R$ 77.052,60 em parcelas. Site trouxe R$ 66.096,05, webinário R$ 57.398,69 e Anne R$ 20.526,69; CS somou R$ 20.352,16 e a recorrência sem vendedor, R$ 24.626,72. Ficaram R$ 43.301,39 sem origem identificável, concentrados nos dias de carrinho (R$ 17.646,82 só em 30/09).</p>
+  </section>
+
+  <section class="channel meta">
+    <div class="ch-head">
+      <h2>Meta Ads por campanha</h2>
+      <div class="desc">Gasto direto da API. Não existe campo de responsável no banco — a marcação IA × gestor segue a regra de que campanha de webinário é da IA.</div>
+      <div class="tot">investido <b>R$ 68.535,41</b> · IA <b>R$ 21.725,17</b> · gestor <b>R$ 46.810,24</b></div>
+    </div>
+    <div class="scroll">
+      <table>
+        <thead><tr><th class="l">Campanha</th><th>Investido</th><th>Frente</th></tr></thead>
+        <tbody>
+          <tr class="daybar"><td colspan="3">IA — campanhas de webinário</td></tr>
+          <tr><td class="l camp"><span class="acct">TRIBUNAIS</span>[WEB][TJAM][CADASTRO][ABO] — quente+frio 09-26 <span class="chip warn">parada 25/09</span></td><td class="num">7.505,29</td><td class="fr">webinário</td></tr>
+          <tr><td class="l camp"><span class="acct">TRIBUNAIS</span>[WEB][SEDUCAM][CADASTRO][ABO] — quente frio 09-26 <span class="chip warn">parada 25/09</span></td><td class="num">4.812,82</td><td class="fr">webinário</td></tr>
+          <tr><td class="l camp"><span class="acct">TRIBUNAIS</span>[WEB][SEDUCPA][CADASTRO][ABO] — frio+quente 09-26 <span class="chip warn">parada 28/09</span></td><td class="num">3.253,84</td><td class="fr">webinário</td></tr>
+          <tr><td class="l camp"><span class="acct">TRIBUNAIS</span>[WEB][MANAUSPREV][CADASTRO][ABO] — quente 09-26</td><td class="num">2.908,04</td><td class="fr">webinário</td></tr>
+          <tr><td class="l camp"><span class="acct">TRIBUNAIS</span>[WEB][TJAM][CADASTRO][ABO] v2 — escala · teste · repescagem</td><td class="num">1.624,40</td><td class="fr">webinário</td></tr>
+          <tr><td class="l camp"><span class="acct">TRIBUNAIS</span>[WEB][SEDUCAM][CADASTRO][ABO] v2 — escala · teste · repescagem</td><td class="num">1.290,86</td><td class="fr">webinário</td></tr>
+          <tr><td class="l camp"><span class="acct">TRIBUNAIS</span>[WEB][TJAM][VENDA][ABO][PQ] 02-09-26 — teste <span class="chip warn">parada 05/09</span></td><td class="num">329,92</td><td class="fr">webinário</td></tr>
+          <tr class="sub"><td class="l">Total IA</td><td class="num">21.725,17</td><td class="fr">32% da mídia</td></tr>
+
+          <tr class="daybar"><td colspan="3">Blindado — venda direta pelo site</td></tr>
+          <tr><td class="l camp"><span class="acct">TRIBUNAIS</span>[PLANO][BLINDADO][TJAM][ABO] morno-quente <span class="chip warn">parada 28/09</span></td><td class="num">2.420,36</td><td class="fr">blindado</td></tr>
+          <tr><td class="l camp"><span class="acct">ON-LINE</span>[PLANO][BLINDADO][SEDUCAM][ABO] morno-quente <span class="chip warn">parada 25/09</span></td><td class="num">2.285,27</td><td class="fr">blindado</td></tr>
+          <tr><td class="l camp"><span class="acct">ON-LINE</span>[PLANO][BLINDADO][SEMSA][ABO] morno-quente <span class="chip warn">parada 28/09</span></td><td class="num">2.038,97</td><td class="fr">blindado</td></tr>
+          <tr><td class="l camp"><span class="acct">ON-LINE</span>[PERPETUO  SEDUC AM] [CBO] - Advantage - 07-08-26 <span class="chip warn">parada 06/09</span></td><td class="num">609,29</td><td class="fr">blindado</td></tr>
+          <tr><td class="l camp"><span class="acct">ON-LINE</span>[PLANO][REMARKETING][POLICIAS] Turma Fundadores → Anne WhatsApp · até 30/09 · @deltafabiosilva</td><td class="num">300,93</td><td class="fr">blindado</td></tr>
+          <tr><td class="l camp"><span class="acct">TRIBUNAIS</span>[TJ-AM][PERPÉTUO][CBO] - Advantage Teste Criativos 05/9 <span class="chip warn">parada 10/09</span></td><td class="num">272,15</td><td class="fr">blindado</td></tr>
+          <tr><td class="l camp"><span class="acct">TRIBUNAIS</span>[SEDUC-PA][PERPÉTUO][CBO] - Advantage Teste Criativos 05/9 <span class="chip warn">parada 08/09</span></td><td class="num">111,36</td><td class="fr">blindado</td></tr>
+          <tr><td class="l camp"><span class="acct">TRIBUNAIS</span>[SEMSA][PERPÉTUO][CBO] - Advantage Teste Criativos 05/9 <span class="chip warn">parada 08/09</span></td><td class="num">109,82</td><td class="fr">blindado</td></tr>
+          <tr><td class="l camp"><span class="acct">TRIBUNAIS</span>[SEDUC-AM][PERPÉTUO][CBO] - Advantage Teste Criativos 05/9 <span class="chip warn">parada 08/09</span></td><td class="num">100,45</td><td class="fr">blindado</td></tr>
+          <tr><td class="l camp"><span class="acct">TRIBUNAIS</span>[PERPETUO MANAUSPREV] [CBO] - Advantage - 25-08-26 <span class="chip warn">parada 02/09</span></td><td class="num">48,80</td><td class="fr">blindado</td></tr>
+          <tr class="sub"><td class="l">Total Blindado</td><td class="num">8.297,40</td><td class="fr">12% da mídia</td></tr>
+
+          <tr class="daybar"><td colspan="3">Aquecimento — atração (F1), consciência e corredor (F2), captação Estude Comigo (F3), lembretes de live</td></tr>
+          <tr><td class="l camp"><span class="acct">TRIBUNAIS</span>[PLANO][FASE3][TJAM] captação Estude Comigo · @souconcurseiro <span class="chip warn">parada 21/09</span></td><td class="num">5.184,11</td><td class="fr">aquecimento</td></tr>
+          <tr><td class="l camp"><span class="acct">ON-LINE</span>[PLANO][FASE2][POLICIAS] consciência · @deltafabiosilva <span class="chip warn">parada 23/09</span></td><td class="num">3.739,83</td><td class="fr">aquecimento</td></tr>
+          <tr><td class="l camp"><span class="acct">ON-LINE</span>[PLANO][FASE3][POLICIAS] captação Estude Comigo · @deltafabiosilva <span class="chip warn">parada 28/09</span></td><td class="num">3.256,17</td><td class="fr">aquecimento</td></tr>
+          <tr><td class="l camp"><span class="acct">ON-LINE</span>[PLANO][FASE3][PRF][QUIZ] diagnóstico → grupo · @deltafabiosilva <span class="chip warn">parada 28/09</span></td><td class="num">2.598,75</td><td class="fr">aquecimento</td></tr>
+          <tr><td class="l camp"><span class="acct">TRIBUNAIS</span>[PLANO][FASE2][SEDUCPA] consciência · @souconcurseiro <span class="chip warn">parada 28/09</span></td><td class="num">1.448,62</td><td class="fr">aquecimento</td></tr>
+          <tr><td class="l camp"><span class="acct">ON-LINE</span>[PLANO][FASE3][SEDUCAM] captação Estude Comigo · @souconcurseiro <span class="chip warn">parada 22/09</span></td><td class="num">1.437,80</td><td class="fr">aquecimento</td></tr>
+          <tr><td class="l camp"><span class="acct">ON-LINE</span>[PLANO][FASE2][PRF] corredor · requisitos → dúvidas → metodologia · @deltafabiosilva</td><td class="num">1.301,25</td><td class="fr">aquecimento</td></tr>
+          <tr><td class="l camp"><span class="acct">TRIBUNAIS</span>[PLANO][FASE2][TJAM] corredor · requisitos → dúvidas → metodologia · @souconcurseiro</td><td class="num">1.282,28</td><td class="fr">aquecimento</td></tr>
+          <tr><td class="l camp"><span class="acct">TRIBUNAIS</span>[PLANO][FASE2][TJAM] consciência · @souconcurseiro <span class="chip warn">parada 22/09</span></td><td class="num">1.159,94</td><td class="fr">aquecimento</td></tr>
+          <tr><td class="l camp"><span class="acct">ON-LINE</span>[PLANO][FASE2][PRF] consciência · @deltafabiosilva <span class="chip warn">parada 16/09</span></td><td class="num">1.109,57</td><td class="fr">aquecimento</td></tr>
+          <tr><td class="l camp"><span class="acct">TRIBUNAIS</span>[PLANO][FASE3][SEDUCPA] captação Estude Comigo · @souconcurseiro <span class="chip warn">parada 23/09</span></td><td class="num">1.000,65</td><td class="fr">aquecimento</td></tr>
+          <tr><td class="l camp"><span class="acct">TRIBUNAIS</span>[PLANO][FASE1][TJAM] atração · frio Adv+ / LAL · @souconcurseiro</td><td class="num">873,33</td><td class="fr">aquecimento</td></tr>
+          <tr><td class="l camp"><span class="acct">ON-LINE</span>[PLANO][FASE2][SEDUCAM] consciência · @souconcurseiro <span class="chip warn">parada 25/09</span></td><td class="num">859,52</td><td class="fr">aquecimento</td></tr>
+          <tr><td class="l camp"><span class="acct">ON-LINE</span>[PLANO][FASE2][SEDUCAM] corredor · oportunidade → dúvidas → metodologia · @souconcurseiro</td><td class="num">793,61</td><td class="fr">aquecimento</td></tr>
+          <tr><td class="l camp"><span class="acct">ON-LINE</span>[PLANO][FASE1][SEDUCAM] atração · frio Adv+ / LAL · @souconcurseiro</td><td class="num">515,38</td><td class="fr">aquecimento</td></tr>
+          <tr><td class="l camp"><span class="acct">ON-LINE</span>[PLANO][LIVE][POLICIAS] lembrete 28/09 → trilha · @deltafabiosilva</td><td class="num">278,61</td><td class="fr">aquecimento</td></tr>
+          <tr><td class="l camp"><span class="acct">ON-LINE</span>[PLANO][LIVE][PRF] lembrete 29/09 → trilha · @deltafabiosilva</td><td class="num">192,24</td><td class="fr">aquecimento</td></tr>
+          <tr><td class="l camp"><span class="acct">TRIBUNAIS</span>[PLANO][FASE1][TJAM] seguidores · vídeos 23/09 · frio Adv+ / LAL · @souconcurseiro <span class="chip warn">parada 25/09</span></td><td class="num">170,57</td><td class="fr">aquecimento</td></tr>
+          <tr><td class="l camp"><span class="acct">ON-LINE</span>[PLANO][FASE1][SEDUCAM] seguidores · vídeos 23/09 · frio Adv+ / LAL · @souconcurseiro <span class="chip warn">parada 25/09</span></td><td class="num">162,97</td><td class="fr">aquecimento</td></tr>
+          <tr><td class="l camp"><span class="acct">ON-LINE</span>[PLANO][FASE3][PRF] captação Estude Comigo · @deltafabiosilva <span class="chip warn">parada 18/09</span></td><td class="num">148,76</td><td class="fr">aquecimento</td></tr>
+          <tr class="sub"><td class="l">Total Aquecimento</td><td class="num">27.513,96</td><td class="fr">40% da mídia</td></tr>
+
+          <tr class="daybar"><td colspan="3">Play Passei — gestor</td></tr>
+          <tr><td class="l camp"><span class="acct">SPOTFABIO</span>[PP][VSL VERTICAL] CBO [VENDA][PF] - 11/09/26 - Advantage+ 25-65 &amp; LAL 1%</td><td class="num">4.435,63</td><td class="fr">Play Passei</td></tr>
+          <tr><td class="l camp"><span class="acct">SPOTFABIO</span>[PP][VSL VERTICAL] ABO TESTE CRIATIVOS NOVOS - 15/09/26</td><td class="num">1.429,47</td><td class="fr">Play Passei</td></tr>
+          <tr><td class="l camp"><span class="acct">SPOTFABIO</span>rt-venda-playpassei-frio-lal-17-07-26 <span class="chip warn">parada 14/09</span></td><td class="num">1.075,78</td><td class="fr">Play Passei</td></tr>
+          <tr><td class="l camp"><span class="acct">SPOTFABIO</span>[PLAYPASSEI][LOW TICKET] CBO [VENDA][VSL][VD][PF] - 21/03/2026 - teste de criativo <span class="chip warn">parada 16/09</span></td><td class="num">996,03</td><td class="fr">Play Passei</td></tr>
+          <tr><td class="l camp"><span class="acct">SPOTFABIO</span>[BIDCAP][CPA 60][PP][LOW] CBO [VENDA][PRF][VD01] <span class="chip warn">parada 06/09</span></td><td class="num">443,48</td><td class="fr">Play Passei</td></tr>
+          <tr><td class="l camp"><span class="acct">SPOTFABIO</span>[PP][LOW] CBO [VENDA][PRF][VD01] - 07/07/26 - Teste Criativos <span class="chip warn">parada 11/09</span></td><td class="num">356,13</td><td class="fr">Play Passei</td></tr>
+          <tr><td class="l camp"><span class="acct">SPOTFABIO</span>[PLAYPASSEI][LOW TICKET] CBO [VENDA][VSL][VD][PF] - 23/03/2026 - teste de criativo <span class="chip warn">parada 11/09</span></td><td class="num">329,37</td><td class="fr">Play Passei</td></tr>
+          <tr class="sub"><td class="l">Total Play Passei</td><td class="num">9.065,89</td><td class="fr">13% da mídia</td></tr>
+
+          <tr class="daybar"><td colspan="3">PRF — ingresso do webinário semanal</td></tr>
+          <tr><td class="l camp"><span class="acct">ON-LINE</span>[PROFISSÃO_PRF] WEB [PV07][19,90][ VENDA [PF] - 03/08/2026 — teste criativos <span class="chip warn">parada 09/09</span></td><td class="num">1.713,89</td><td class="fr">PRF</td></tr>
+          <tr><td class="l camp"><span class="acct">ON-LINE</span>[PROFISSÃO_PRF] WEB [PV11][19,90][ VENDA [PF] - 06/08/2026 — teste pagina <span class="chip warn">parada 06/09</span></td><td class="num">219,10</td><td class="fr">PRF</td></tr>
+          <tr class="sub"><td class="l">Total PRF</td><td class="num">1.932,99</td><td class="fr">3% da mídia</td></tr>
+
+          <tr class="total"><td class="l">Total Meta · setembro (sem imposto)</td><td class="num">68.535,41</td><td class="fr">—</td></tr>
+          <tr class="sub"><td class="l">Imposto sobre a mídia (13,83%)</td><td class="num">9.478,45</td><td class="fr">—</td></tr>
+          <tr class="total"><td class="l">Meta com imposto</td><td class="num">78.013,86</td><td class="fr">—</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="lede">As maiores contas do mês foram o cadastro do webinário do TJ-AM (R$ 7.505,29), a captação Estude Comigo do TJ-AM (R$ 5.184,11, aquecimento) e a VSL vertical do Play Passei (R$ 4.435,63). As campanhas de <code>[PLANO][FASE1/2/3]</code> e os lembretes de live são aquecimento: não se julgam pelo ROAS próprio, e sim pelos cortes que alimentaram.</p>
+  </section>
+
+  <section class="channel meta">
+    <div class="ch-head">
+      <h2>Webinário pago do PRF — tráfego, ingresso e conversão</h2>
+      <div class="desc">Campanhas <code>[PROFISSÃO_PRF]</code> vendendo o ingresso de R$ 19,90, que leva ao webinário semanal onde o Elite PRF é ofertado.</div>
+      <div class="tot">R$ 1.932,99 de mídia · <b>36 ingressos</b> · CPA <b>R$ 53,69</b></div>
+    </div>
+    <div class="scroll">
+      <table>
+        <thead><tr><th class="l">Dia</th><th>Investido</th><th>Impressões</th><th>Cliques</th><th>CPC</th><th>Ingressos</th><th>CPA ingresso</th><th>Clique → ingresso</th></tr></thead>
+        <tbody><tr><td class="l">03/09 · qui</td><td class="num">194,82</td><td class="num">7.891</td><td class="num">277</td><td class="num">0,70</td><td class="num">—</td><td class="num">—</td><td class="num">0,00%</td></tr><tr><td class="l">04/09 · sex</td><td class="num">172,45</td><td class="num">5.997</td><td class="num">243</td><td class="num">0,71</td><td class="num">4</td><td class="num">43,11</td><td class="num">1,65%</td></tr><tr><td class="l">05/09 · sáb</td><td class="num">200,06</td><td class="num">6.725</td><td class="num">262</td><td class="num">0,76</td><td class="num">5</td><td class="num">40,01</td><td class="num">1,91%</td></tr><tr><td class="l">06/09 · dom</td><td class="num">667,65</td><td class="num">19.843</td><td class="num">707</td><td class="num">0,94</td><td class="num">9</td><td class="num">74,18</td><td class="num">1,27%</td></tr><tr><td class="l">07/09 · seg</td><td class="num">224,62</td><td class="num">6.198</td><td class="num">230</td><td class="num">0,98</td><td class="num">4</td><td class="num">56,16</td><td class="num">1,74%</td></tr><tr><td class="l">08/09 · ter</td><td class="num">314,82</td><td class="num">9.001</td><td class="num">341</td><td class="num">0,92</td><td class="num">11</td><td class="num">28,62</td><td class="num">3,23%</td></tr><tr><td class="l">09/09 · qua</td><td class="num">158,57</td><td class="num">4.121</td><td class="num">171</td><td class="num">0,93</td><td class="num">2</td><td class="num">79,28</td><td class="num">1,17%</td></tr><tr class="total"><td class="l">Total</td><td class="num">1.932,99</td><td class="num">59.776</td><td class="num">2.231</td><td class="num">0,87</td><td class="num">36</td><td class="num">53,69</td><td class="num">1,61%</td></tr></tbody>
+      </table>
+    </div>
+    <div class="costs">
+      <div><div class="c-lbl">CPA por ingresso</div><div class="c-val" style="color:var(--teal)">R$ 53,69</div><div class="c-sub">gate do plano é ≤ R$ 75</div></div>
+      <div><div class="c-lbl">Clique → ingresso</div><div class="c-val">1,61%</div><div class="c-sub">2.231 cliques → 36 ingressos</div></div>
+      <div><div class="c-lbl">Ingresso → Elite PRF</div><div class="c-val">11,1%</div><div class="c-sub">4 dos 36 compraram o Elite</div></div>
+      <div><div class="c-lbl">Receita do Elite</div><div class="c-val">R$ 4.993,73</div><div class="c-sub">líq., vindo de quem comprou ingresso</div></div>
+      <div><div class="c-lbl">CAC do Elite</div><div class="c-val">R$ 483,25</div><div class="c-sub">toda a mídia do PRF ÷ Elites fechados</div></div>
+    </div>
+  </section>
+
+  <section class="channel disp">
+    <div class="ch-head">
+      <h2>Disparo WhatsApp</h2>
+      <div class="desc">Mensagens enviadas pela Anne IA × R$ 0,43. O custo entra na frente que a mensagem alimenta.</div>
+      <div class="tot">46.651 msgs · <b>R$ 20.059,93</b></div>
+    </div>
+    <div class="scroll">
+      <table>
+        <thead><tr><th class="l">Dia do envio</th><th>Blindado</th><th>Webinário</th><th>Total msgs</th><th>Custo</th></tr></thead>
+        <tbody>
+          <tr><td class="l">Ter, 01/09</td><td class="num">14</td><td class="num"><span class="zero">—</span></td><td class="num">14</td><td class="num">6,02</td></tr>
+          <tr><td class="l">Qua, 02/09</td><td class="num">10</td><td class="num">970</td><td class="num">980</td><td class="num">421,40</td></tr>
+          <tr><td class="l">Qui, 03/09</td><td class="num">22</td><td class="num">496</td><td class="num">518</td><td class="num">222,74</td></tr>
+          <tr><td class="l">Sex, 04/09</td><td class="num">16</td><td class="num"><span class="zero">—</span></td><td class="num">16</td><td class="num">6,88</td></tr>
+          <tr><td class="l">Sáb, 05/09</td><td class="num">22</td><td class="num">28</td><td class="num">50</td><td class="num">21,50</td></tr>
+          <tr><td class="l">Dom, 06/09 <span class="chip good">maior disparo do mês</span></td><td class="num">21</td><td class="num">5.434</td><td class="num">5.455</td><td class="num">2.345,65</td></tr>
+          <tr><td class="l">Seg, 07/09</td><td class="num">20</td><td class="num"><span class="zero">—</span></td><td class="num">20</td><td class="num">8,60</td></tr>
+          <tr><td class="l">Ter, 08/09</td><td class="num">24</td><td class="num"><span class="zero">—</span></td><td class="num">24</td><td class="num">10,32</td></tr>
+          <tr><td class="l">Qua, 09/09</td><td class="num">21</td><td class="num">4</td><td class="num">25</td><td class="num">10,75</td></tr>
+          <tr><td class="l">Qui, 10/09</td><td class="num">22</td><td class="num"><span class="zero">—</span></td><td class="num">22</td><td class="num">9,46</td></tr>
+          <tr><td class="l">Sex, 11/09</td><td class="num">24</td><td class="num"><span class="zero">—</span></td><td class="num">24</td><td class="num">10,32</td></tr>
+          <tr><td class="l">Sáb, 12/09</td><td class="num">9</td><td class="num"><span class="zero">—</span></td><td class="num">9</td><td class="num">3,87</td></tr>
+          <tr><td class="l">Dom, 13/09</td><td class="num">18</td><td class="num"><span class="zero">—</span></td><td class="num">18</td><td class="num">7,74</td></tr>
+          <tr><td class="l">Seg, 14/09</td><td class="num">14</td><td class="num">3.232</td><td class="num">3.246</td><td class="num">1.395,78</td></tr>
+          <tr><td class="l">Ter, 15/09</td><td class="num">10</td><td class="num">4.817</td><td class="num">4.827</td><td class="num">2.075,61</td></tr>
+          <tr><td class="l">Qua, 16/09</td><td class="num">20</td><td class="num">4.842</td><td class="num">4.862</td><td class="num">2.090,66</td></tr>
+          <tr><td class="l">Qui, 17/09</td><td class="num">9</td><td class="num">3.773</td><td class="num">3.782</td><td class="num">1.626,26</td></tr>
+          <tr><td class="l">Sex, 18/09</td><td class="num">22</td><td class="num">1.779</td><td class="num">1.801</td><td class="num">774,43</td></tr>
+          <tr><td class="l">Sáb, 19/09</td><td class="num">10</td><td class="num">2</td><td class="num">12</td><td class="num">5,16</td></tr>
+          <tr><td class="l">Dom, 20/09</td><td class="num">16</td><td class="num">1</td><td class="num">17</td><td class="num">7,31</td></tr>
+          <tr><td class="l">Seg, 21/09</td><td class="num">11</td><td class="num">795</td><td class="num">806</td><td class="num">346,58</td></tr>
+          <tr><td class="l">Ter, 22/09</td><td class="num">4.223</td><td class="num">540</td><td class="num">4.763</td><td class="num">2.048,09</td></tr>
+          <tr><td class="l">Qua, 23/09</td><td class="num">1.082</td><td class="num">1</td><td class="num">1.083</td><td class="num">465,69</td></tr>
+          <tr><td class="l">Qui, 24/09</td><td class="num">65</td><td class="num">2</td><td class="num">67</td><td class="num">28,81</td></tr>
+          <tr><td class="l">Sex, 25/09</td><td class="num">54</td><td class="num">2.655</td><td class="num">2.709</td><td class="num">1.164,87</td></tr>
+          <tr><td class="l">Sáb, 26/09</td><td class="num">23</td><td class="num">1.456</td><td class="num">1.479</td><td class="num">635,97</td></tr>
+          <tr><td class="l">Dom, 27/09</td><td class="num">18</td><td class="num">2.104</td><td class="num">2.122</td><td class="num">912,46</td></tr>
+          <tr><td class="l">Seg, 28/09</td><td class="num">17</td><td class="num">2.558</td><td class="num">2.575</td><td class="num">1.107,25</td></tr>
+          <tr><td class="l">Ter, 29/09</td><td class="num">19</td><td class="num">1.180</td><td class="num">1.199</td><td class="num">515,57</td></tr>
+          <tr><td class="l">Qua, 30/09</td><td class="num">1.378</td><td class="num">2.748</td><td class="num">4.126</td><td class="num">1.774,18</td></tr>
+          <tr class="total"><td class="l">Total</td><td class="num">7.234</td><td class="num">39.417</td><td class="num">46.651</td><td class="num">20.059,93</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="lede">Setembro teve 46.651 mensagens disparadas: 39.417 de webinário e 7.234 de blindado, a um custo de R$ 20.059,93. Os picos de blindado coincidem com os carrinhos (4.223 em 22/09 para o TJ-AM e 1.378 em 30/09 no AGORA15), e é esse disparo que sustenta o ROAS de 5,36 da frente.</p>
+  </section>
+
+  <section class="channel disp">
+    <div class="ch-head">
+      <h2>Funis de webinário</h2>
+      <div class="desc">Rastreamento automático em <code>webinar_events</code>. Venda contada pelo cruzamento de quem clicou no checkout com as faturas pagas (telefone + e-mail).</div>
+      <div class="tot">2.690 leads · <b>74 vendas</b> · <b>R$ 56.443 líq.</b></div>
+    </div>
+    <div class="scroll">
+      <table>
+        <thead><tr><th class="l">Etapa</th><th>TJ-AM</th><th>SEDUC-PA</th><th>SEDUC-AM</th><th>Total</th></tr></thead>
+        <tbody>
+          <tr><td class="l">Entraram no funil</td><td class="num">1.433</td><td class="num">531</td><td class="num">726</td><td class="num">2.690</td></tr>
+          <tr><td class="l">Receberam o link</td><td class="num">1.232</td><td class="num">494</td><td class="num">662</td><td class="num">2.388</td></tr>
+          <tr><td class="l">Entraram na sala</td><td class="num">1.160</td><td class="num">390</td><td class="num">558</td><td class="num">2.108</td></tr>
+          <tr><td class="l">Chegaram ao pitch</td><td class="num">573</td><td class="num">197</td><td class="num">256</td><td class="num">1.026</td></tr>
+          <tr><td class="l">Clicaram no checkout</td><td class="num">237</td><td class="num">78</td><td class="num">151</td><td class="num">466</td></tr>
+          <tr><td class="l">Compraram</td><td class="num">36</td><td class="num">12</td><td class="num">26</td><td class="num">74</td></tr>
+          <tr class="sub"><td class="l">Receita líquida atribuída</td><td class="num">31.189,93</td><td class="num">8.185,37</td><td class="num">17.067,91</td><td class="num">56.443,21</td></tr>
+          <tr class="sub"><td class="l">Carrinhos abandonados</td><td class="num roas-bad">201</td><td class="num roas-bad">66</td><td class="num roas-bad">125</td><td class="num roas-bad">392</td></tr>
+          <tr class="total"><td class="l">Conversão checkout → venda</td><td class="num">15,2%</td><td class="num">15,4%</td><td class="num">17,2%</td><td class="num">15,9%</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="lede">O webinário do <b>TJ-AM</b> foi o funil mais cheio: 1.433 leads, 1.160 entraram, 573 chegaram ao pitch, 237 clicaram no checkout e 36 pagaram (R$ 31.189,93). <b>SEDUC-AM</b>: 726 leads, 151 cliques no checkout, 26 pagaram (R$ 17.067,91). <b>SEDUC-PA</b>: 531 leads, 78 cliques, 12 pagaram (R$ 8.185,37). Em todos, a perda maior está entre o clique no checkout e o pagamento.</p>
+  </section>
+
+  <section class="channel disp">
+    <div class="ch-head">
+      <h2>Carrinhos abandonados — a Anne IA está atacando?</h2>
+      <div class="desc">Os leads que clicaram no checkout dos webinários e não pagaram, cruzados com as conversas no banco da Anne.</div>
+      <div class="tot"><b>99%</b> em conversa · <b>1</b> com follow-up agendado</div>
+    </div>
+    <div class="costs">
+      <div><div class="c-lbl">Carrinhos abandonados</div><div class="c-val" style="color:var(--clay)">437</div><div class="c-sub">466 cliques em checkout, 74 pagaram</div></div>
+      <div><div class="c-lbl">A Anne já falou</div><div class="c-val" style="color:var(--teal)">425</div><div class="c-sub">97% dos abandonados</div></div>
+      <div><div class="c-lbl">Responderam</div><div class="c-val" style="color:var(--teal)">239</div><div class="c-sub">56% de quem recebeu</div></div>
+      <div><div class="c-lbl">Falaram nas últimas 48h</div><div class="c-val">54</div><div class="c-sub">conversa ainda viva</div></div>
+      <div><div class="c-lbl">Escalados para humano</div><div class="c-val">40</div><div class="c-sub">9% dos abandonados</div></div>
+      <div><div class="c-lbl">Follow-up agendado</div><div class="c-val" style="color:var(--clay)">1</div><div class="c-sub">649 cancelados · 180 concluídos</div></div>
+    </div>
+    <p class="lede">Dos 437 carrinhos abandonados dos webinários, a Anne tem conversa com 431 e abordou 425; 239 responderam, 40 foram escalados para humano e 54 tiveram atividade nas últimas 48h. O furo segue sendo a régua: só <b>1</b> follow-up está agendado, contra 649 cancelados e 180 concluídos.</p>
+  </section>
+
+  <section class="channel disp">
+    <div class="ch-head">
+      <h2>Cortes das lives — o que a live e o carrinho entregaram</h2>
+      <div class="desc">Vendas <b>novas</b> (valor cheio ou 1ª parcela) do produto de cada frente, por dia e por canal, a partir da véspera da live. Célula = vendas · R$ líquido. O link do vendedor é a porta principal: os alunos ficam empilhados no grupo com atendimento do time. <b>Conversão do grupo</b> = vendas novas desde a live ÷ pessoas no grupo (participantes reais no snapshot do SendFlow).</div>
+    </div>
+    <div class="chartbox"><div class="chart-t">TJ-AM — live 21/09, carrinho 22/09 <span class="chip good">carrinho aberto</span></div>
+    <div class="costs">
+      <div><div class="c-lbl">Live · 21/09</div><div class="c-val">2 vendas</div><div class="c-sub">R$ 2.809 no dia da live · convite: 794 msgs</div></div>
+      <div><div class="c-lbl">Carrinho · 22/09</div><div class="c-val" style="color:var(--teal)">16 vendas novas</div><div class="c-sub">R$ 18.650,22 líq. no dia da abertura</div></div>
+      <div><div class="c-lbl">Disparo da abertura</div><div class="c-val">4.213 msgs</div><div class="c-sub">BLINDADO CARRINHO · ELITE TJ-AM · 22/09 · camada às 09:39–13:09</div></div>
+      <div><div class="c-lbl">1ª venda do carrinho</div><div class="c-val">06h</div><div class="c-sub">10 até as 10h</div></div>
+      <div><div class="c-lbl">Depois da abertura</div><div class="c-val">47 vendas</div><div class="c-sub">R$ 36.012 · até 30/09</div></div>
+      <div><div class="c-lbl">Desde a live</div><div class="c-val" style="color:var(--teal)">R$ 57.471</div><div class="c-sub">65 vendas novas · mais 75 parcelas (R$ 11.820)</div></div>
+      <div><div class="c-lbl">Base no grupo</div><div class="c-val">1.187 pessoas</div><div class="c-sub">11 grupos · SendFlow 20/09 23:18 · 335 rastreados ativos · + 744 nos grupos de agosto</div></div>
+      <div><div class="c-lbl">Conversão do grupo</div><div class="c-val" style="color:var(--teal)">5,5%</div><div class="c-sub">65 vendas novas ÷ 1.187 · dia do carrinho 1,3%</div></div>
+    </div>
+      <div class="chart-legend" style="margin-top:10px"><span>Vendas novas no dia do carrinho, por hora:</span> <span class="chip warn">06h: 1</span> <span class="chip good">08h: 8</span> <span class="chip warn">09h: 1</span> <span class="chip warn">11h: 1</span> <span class="chip warn">12h: 1</span> <span class="chip warn">14h: 1</span> <span class="chip warn">15h: 1</span> <span class="chip warn">18h: 2</span></div>
+      <div class="scroll"><table><thead><tr><th class="l">Dia</th><th>Link do vendedor</th><th>Grupo</th><th>Site / blindado</th><th>Webinário</th><th>Anne IA</th><th>CS</th><th>Outros</th><th>Vendas novas</th><th>Parcelas</th></tr></thead><tbody><tr><td class="l">20/09 · dom</td><td class="num"><span class="zero">—</span></td><td class="num"><span class="zero">—</span></td><td class="num"><span class="zero">—</span></td><td class="num"><span class="zero">—</span></td><td class="num"><span class="zero">—</span></td><td class="num"><span class="zero">—</span></td><td class="num"><span class="zero">—</span></td><td class="num"><b>0 · 0</b></td><td class="num">3 · 497</td></tr><tr><td class="l">21/09 · seg <span class="chip good">live</span></td><td class="num"><span class="zero">—</span></td><td class="num"><span class="zero">—</span></td><td class="num">1 · 1.561</td><td class="num">1 · 1.248</td><td class="num"><span class="zero">—</span></td><td class="num"><span class="zero">—</span></td><td class="num"><span class="zero">—</span></td><td class="num"><b>2 · 2.809</b></td><td class="num">10 · 1.779</td></tr><tr><td class="l">22/09 · ter <span class="chip good">carrinho</span></td><td class="num">13 · 14.148</td><td class="num">1 · 1.501</td><td class="num"><span class="zero">—</span></td><td class="num">2 · 3.002</td><td class="num"><span class="zero">—</span></td><td class="num"><span class="zero">—</span></td><td class="num"><span class="zero">—</span></td><td class="num"><b>16 · 18.650</b></td><td class="num">8 · 1.127</td></tr><tr><td class="l">23/09 · qua</td><td class="num">5 · 3.673</td><td class="num"><span class="zero">—</span></td><td class="num">3 · 4.740</td><td class="num"><span class="zero">—</span></td><td class="num"><span class="zero">—</span></td><td class="num"><span class="zero">—</span></td><td class="num"><span class="zero">—</span></td><td class="num"><b>8 · 8.412</b></td><td class="num">1 · 182</td></tr><tr><td class="l">24/09 · qui</td><td class="num">4 · 1.869</td><td class="num"><span class="zero">—</span></td><td class="num">1 · 1.601</td><td class="num"><span class="zero">—</span></td><td class="num"><span class="zero">—</span></td><td class="num"><span class="zero">—</span></td><td class="num"><span class="zero">—</span></td><td class="num"><b>5 · 3.470</b></td><td class="num">5 · 642</td></tr><tr><td class="l">25/09 · sex</td><td class="num"><span class="zero">—</span></td><td class="num"><span class="zero">—</span></td><td class="num"><span class="zero">—</span></td><td class="num"><span class="zero">—</span></td><td class="num">1 · 1.601</td><td class="num"><span class="zero">—</span></td><td class="num"><span class="zero">—</span></td><td class="num"><b>1 · 1.601</b></td><td class="num">11 · 1.590</td></tr><tr><td class="l">26/09 · sáb</td><td class="num">3 · 1.746</td><td class="num"><span class="zero">—</span></td><td class="num">1 · 1.601</td><td class="num">1 · 1.300</td><td class="num"><span class="zero">—</span></td><td class="num"><span class="zero">—</span></td><td class="num"><span class="zero">—</span></td><td class="num"><b>5 · 4.648</b></td><td class="num">3 · 552</td></tr><tr><td class="l">27/09 · dom</td><td class="num">1 · 123</td><td class="num"><span class="zero">—</span></td><td class="num"><span class="zero">—</span></td><td class="num">1 · 1.501</td><td class="num"><span class="zero">—</span></td><td class="num"><span class="zero">—</span></td><td class="num"><span class="zero">—</span></td><td class="num"><b>2 · 1.624</b></td><td class="num">1 · 182</td></tr><tr><td class="l">28/09 · seg</td><td class="num"><span class="zero">—</span></td><td class="num"><span class="zero">—</span></td><td class="num"><span class="zero">—</span></td><td class="num">3 · 2.685</td><td class="num"><span class="zero">—</span></td><td class="num"><span class="zero">—</span></td><td class="num"><span class="zero">—</span></td><td class="num"><b>3 · 2.685</b></td><td class="num">8 · 1.324</td></tr><tr><td class="l">29/09 · ter</td><td class="num"><span class="zero">—</span></td><td class="num"><span class="zero">—</span></td><td class="num">1 · 1.586</td><td class="num">1 · 106</td><td class="num">1 · 1.601</td><td class="num"><span class="zero">—</span></td><td class="num"><span class="zero">—</span></td><td class="num"><b>3 · 3.293</b></td><td class="num">8 · 1.338</td></tr><tr><td class="l">30/09 · qua</td><td class="num">6 · 3.274</td><td class="num"><span class="zero">—</span></td><td class="num"><span class="zero">—</span></td><td class="num"><span class="zero">—</span></td><td class="num">2 · 2.713</td><td class="num"><span class="zero">—</span></td><td class="num"><span class="zero">—</span></td><td class="num"><b>8 · 5.986</b></td><td class="num">3 · 509</td></tr><tr><td class="l">01/10 · qui</td><td class="num">6 · 1.094</td><td class="num"><span class="zero">—</span></td><td class="num"><span class="zero">—</span></td><td class="num">1 · 106</td><td class="num"><span class="zero">—</span></td><td class="num">2 · 1.427</td><td class="num"><span class="zero">—</span></td><td class="num"><b>9 · 2.627</b></td><td class="num">8 · 1.202</td></tr><tr><td class="l">02/10 · sex</td><td class="num">2 · 365</td><td class="num"><span class="zero">—</span></td><td class="num"><span class="zero">—</span></td><td class="num">1 · 1.300</td><td class="num"><span class="zero">—</span></td><td class="num"><span class="zero">—</span></td><td class="num"><span class="zero">—</span></td><td class="num"><b>3 · 1.665</b></td><td class="num">9 · 1.390</td></tr></tbody></table></div>
+    <p class="lede">O corte de <b>Polícias AM</b> foi o maior do mês: carrinho aberto na própria live de 28/09, 79 vendas e R$ 65.259,63 entre 21h e 23h, e 171 vendas / R$ 129.872,54 até agora (18,53% do grupo). <b>TJ-AM</b> fez 65 vendas novas e R$ 57.470,97 desde a live de 21/09 (5,48%); <b>PRF</b>, 22 vendas e R$ 21.643,60 (7,77%); <b>SEDUC-AM</b>, 14 vendas e R$ 11.127,56 (2,86%); <b>SEDUC-PA</b>, só 3 vendas e R$ 1.676,93 (1,8%).</p>
+    </div>
+    <div class="chartbox"><div class="chart-t">SEDUC-AM — live 22/09, carrinho 23/09 <span class="chip good">carrinho aberto</span></div>
+    <div class="costs">
+      <div><div class="c-lbl">Live · 22/09</div><div class="c-val">1 venda</div><div class="c-sub">R$ 887 no dia da live · convite: 540 msgs</div></div>
+      <div><div class="c-lbl">Carrinho · 23/09</div><div class="c-val" style="color:var(--teal)">4 vendas novas</div><div class="c-sub">R$ 2.883,96 líq. no dia da abertura</div></div>
+      <div><div class="c-lbl">Disparo da abertura</div><div class="c-val">1.060 msgs</div><div class="c-sub">BLINDADO CARRINHO · ELITE SEDUC-AM · 23/09 · cam às 09:57–10:49</div></div>
+      <div><div class="c-lbl">1ª venda do carrinho</div><div class="c-val">00h</div><div class="c-sub">1 até as 10h</div></div>
+      <div><div class="c-lbl">Depois da abertura</div><div class="c-val">9 vendas</div><div class="c-sub">R$ 7.357 · até 30/09</div></div>
+      <div><div class="c-lbl">Desde a live</div><div class="c-val" style="color:var(--teal)">R$ 11.128</div><div class="c-sub">14 vendas novas · mais 11 parcelas (R$ 1.711)</div></div>
+      <div><div class="c-lbl">Base no grupo</div><div class="c-val">489 pessoas</div><div class="c-sub">4 grupos · SendFlow 20/09 23:18 · 348 rastreados ativos</div></div>
+      <div><div class="c-lbl">Conversão do grupo</div><div class="c-val" style="color:var(--teal)">2,9%</div><div class="c-sub">14 vendas novas ÷ 489 · dia do carrinho 0,8%</div></div>
+    </div>
+      <div class="chart-legend" style="margin-top:10px"><span>Vendas novas no dia do carrinho, por hora:</span> <span class="chip warn">00h: 1</span> <span class="chip warn">10h: 1</span> <span class="chip warn">11h: 1</span> <span class="chip warn">16h: 1</span></div>
+      <div class="scroll"><table><thead><tr><th class="l">Dia</th><th>Link do vendedor</th><th>Grupo</th><th>Site / blindado</th><th>Webinário</th><th>Anne IA</th><th>CS</th><th>Outros</th><th>Vendas novas</th><th>Parcelas</th></tr></thead><tbody><tr><td class="l">21/09 · seg</td><td class="num"><span class="zero">—</span></td><td class="num"><span class="zero">—</span></td><td class="num"><span class="zero">—</span></td><td class="num">1 · 898</td><td class="num"><span class="zero">—</span></td><td class="num"><span class="zero">—</span></td><td class="num"><span class="zero">—</span></td><td class="num"><b>1 · 898</b></td><td class="num">0 · 0</td></tr><tr><td class="l">22/09 · ter <span class="chip good">live</span></td><td class="num"><span class="zero">—</span></td><td class="num"><span class="zero">—</span></td><td class="num"><span class="zero">—</span></td><td class="num">1 · 887</td><td class="num"><span class="zero">—</span></td><td class="num"><span class="zero">—</span></td><td class="num"><span class="zero">—</span></td><td class="num"><b>1 · 887</b></td><td class="num">0 · 0</td></tr><tr><td class="l">23/09 · qua <span class="chip good">carrinho</span></td><td class="num">3 · 2.022</td><td class="num"><span class="zero">—</span></td><td class="num"><span class="zero">—</span></td><td class="num">1 · 862</td><td class="num"><span class="zero">—</span></td><td class="num"><span class="zero">—</span></td><td class="num"><span class="zero">—</span></td><td class="num"><b>4 · 2.884</b></td><td class="num">0 · 0</td></tr><tr><td class="l">24/09 · qui</td><td class="num">1 · 999</td><td class="num"><span class="zero">—</span></td><td class="num"><span class="zero">—</span></td><td class="num"><span class="zero">—</span></td><td class="num"><span class="zero">—</span></td><td class="num"><span class="zero">—</span></td><td class="num"><span class="zero">—</span></td><td class="num"><b>1 · 999</b></td><td class="num">1 · 81</td></tr><tr><td class="l">25/09 · sex</td><td class="num"><span class="zero">—</span></td><td class="num"><span class="zero">—</span></td><td class="num"><span class="zero">—</span></td><td class="num"><span class="zero">—</span></td><td class="num"><span class="zero">—</span></td><td class="num"><span class="zero">—</span></td><td class="num"><span class="zero">—</span></td><td class="num"><b>0 · 0</b></td><td class="num">2 · 172</td></tr><tr><td class="l">26/09 · sáb</td><td class="num"><span class="zero">—</span></td><td class="num"><span class="zero">—</span></td><td class="num"><span class="zero">—</span></td><td class="num">1 · 898</td><td class="num"><span class="zero">—</span></td><td class="num"><span class="zero">—</span></td><td class="num"><span class="zero">—</span></td><td class="num"><b>1 · 898</b></td><td class="num">0 · 0</td></tr><tr><td class="l">28/09 · seg</td><td class="num"><span class="zero">—</span></td><td class="num"><span class="zero">—</span></td><td class="num"><span class="zero">—</span></td><td class="num">1 · 898</td><td class="num"><span class="zero">—</span></td><td class="num"><span class="zero">—</span></td><td class="num"><span class="zero">—</span></td><td class="num"><b>1 · 898</b></td><td class="num">2 · 245</td></tr><tr><td class="l">29/09 · ter</td><td class="num"><span class="zero">—</span></td><td class="num"><span class="zero">—</span></td><td class="num"><span class="zero">—</span></td><td class="num"><span class="zero">—</span></td><td class="num"><span class="zero">—</span></td><td class="num"><span class="zero">—</span></td><td class="num"><span class="zero">—</span></td><td class="num"><b>0 · 0</b></td><td class="num">1 · 213</td></tr><tr><td class="l">30/09 · qua</td><td class="num">3 · 1.782</td><td class="num"><span class="zero">—</span></td><td class="num">1 · 959</td><td class="num"><span class="zero">—</span></td><td class="num"><span class="zero">—</span></td><td class="num"><span class="zero">—</span></td><td class="num"><span class="zero">—</span></td><td class="num"><b>4 · 2.740</b></td><td class="num">2 · 263</td></tr><tr><td class="l">01/10 · qui</td><td class="num"><span class="zero">—</span></td><td class="num"><span class="zero">—</span></td><td class="num">1 · 959</td><td class="num">1 · 862</td><td class="num"><span class="zero">—</span></td><td class="num"><span class="zero">—</span></td><td class="num"><span class="zero">—</span></td><td class="num"><b>2 · 1.821</b></td><td class="num">2 · 576</td></tr><tr><td class="l">02/10 · sex</td><td class="num"><span class="zero">—</span></td><td class="num"><span class="zero">—</span></td><td class="num"><span class="zero">—</span></td><td class="num"><span class="zero">—</span></td><td class="num"><span class="zero">—</span></td><td class="num"><span class="zero">—</span></td><td class="num"><span class="zero">—</span></td><td class="num"><b>0 · 0</b></td><td class="num">1 · 162</td></tr></tbody></table></div>
+      <p class="lede">Carrinho abriu sem nenhuma venda nas duas primeiras horas.</p>
+    </div>
+    <div class="chartbox"><div class="chart-t">SEDUC-PA — live 23/09, carrinho 24/09 <span class="chip good">carrinho aberto</span></div>
+    <div class="costs">
+      <div><div class="c-lbl">Live · 23/09</div><div class="c-val">2 vendas</div><div class="c-sub">R$ 1.190 no dia da live</div></div>
+      <div><div class="c-lbl">Carrinho · 24/09</div><div class="c-val" style="color:var(--teal)">1 vendas novas</div><div class="c-sub">R$ 486,74 líq. no dia da abertura</div></div>
+      <div><div class="c-lbl">Disparo da abertura</div><div class="c-val">—</div><div class="c-sub">sem disparo grande no dia</div></div>
+      <div><div class="c-lbl">1ª venda do carrinho</div><div class="c-val">18h</div><div class="c-sub">0 até as 10h</div></div>
+      <div><div class="c-lbl">Depois da abertura</div><div class="c-val">0 vendas</div><div class="c-sub">R$ 0 · até 30/09</div></div>
+      <div><div class="c-lbl">Desde a live</div><div class="c-val" style="color:var(--teal)">R$ 1.677</div><div class="c-sub">3 vendas novas · mais 0 parcelas (R$ 0)</div></div>
+      <div><div class="c-lbl">Base no grupo</div><div class="c-val">167 pessoas</div><div class="c-sub">3 grupos · SendFlow 20/09 23:18 · 66 rastreados ativos</div></div>
+      <div><div class="c-lbl">Conversão do grupo</div><div class="c-val" style="color:var(--clay)">1,8%</div><div class="c-sub">3 vendas novas ÷ 167 · dia do carrinho 0,6%</div></div>
+    </div>
+      <div class="chart-legend" style="margin-top:10px"><span>Vendas novas no dia do carrinho, por hora:</span> <span class="chip warn">18h: 1</span></div>
+      <div class="scroll"><table><thead><tr><th class="l">Dia</th><th>Link do vendedor</th><th>Grupo</th><th>Site / blindado</th><th>Webinário</th><th>Anne IA</th><th>CS</th><th>Outros</th><th>Vendas novas</th><th>Parcelas</th></tr></thead><tbody><tr><td class="l">23/09 · qua <span class="chip good">live</span></td><td class="num"><span class="zero">—</span></td><td class="num"><span class="zero">—</span></td><td class="num"><span class="zero">—</span></td><td class="num"><span class="zero">—</span></td><td class="num">2 · 1.190</td><td class="num"><span class="zero">—</span></td><td class="num"><span class="zero">—</span></td><td class="num"><b>2 · 1.190</b></td><td class="num">0 · 0</td></tr><tr><td class="l">24/09 · qui <span class="chip good">carrinho</span></td><td class="num">1 · 487</td><td class="num"><span class="zero">—</span></td><td class="num"><span class="zero">—</span></td><td class="num"><span class="zero">—</span></td><td class="num"><span class="zero">—</span></td><td class="num"><span class="zero">—</span></td><td class="num"><span class="zero">—</span></td><td class="num"><b>1 · 487</b></td><td class="num">0 · 0</td></tr></tbody></table></div>
+      <p class="lede">Live em 23/09 as 19h; carrinho abre em 24/09.</p>
+    </div>
+    <div class="chartbox"><div class="chart-t">Polícias — live 28/09, carrinho 28/09 <span class="chip good">carrinho aberto</span></div>
+    <div class="costs">
+      <div><div class="c-lbl">Live · 28/09</div><div class="c-val">79 vendas</div><div class="c-sub">R$ 65.260 no dia da live · convite: 1.427 msgs</div></div>
+      <div><div class="c-lbl">Carrinho · 28/09</div><div class="c-val" style="color:var(--teal)">79 vendas novas</div><div class="c-sub">R$ 65.259,63 líq. no dia da abertura</div></div>
+      <div><div class="c-lbl">Disparo da abertura</div><div class="c-val">1.427 msgs</div><div class="c-sub">EC POLÍCIAS AM · Ficha · follow-up T6 · todos ·  às 11:00–12:13</div></div>
+      <div><div class="c-lbl">1ª venda do carrinho</div><div class="c-val">21h</div><div class="c-sub">0 até as 10h</div></div>
+      <div><div class="c-lbl">Depois da abertura</div><div class="c-val">92 vendas</div><div class="c-sub">R$ 64.613 · até 30/09</div></div>
+      <div><div class="c-lbl">Desde a live</div><div class="c-val" style="color:var(--teal)">R$ 129.873</div><div class="c-sub">171 vendas novas · mais 0 parcelas (R$ 0)</div></div>
+      <div><div class="c-lbl">Base no grupo</div><div class="c-val">923 pessoas</div><div class="c-sub">6 grupos · SendFlow 20/09 23:18 · 1222 rastreados ativos</div></div>
+      <div><div class="c-lbl">Conversão do grupo</div><div class="c-val" style="color:var(--teal)">18,5%</div><div class="c-sub">171 vendas novas ÷ 923 · dia do carrinho 8,6%</div></div>
+    </div>
+      <div class="chart-legend" style="margin-top:10px"><span>Vendas novas no dia do carrinho, por hora:</span> <span class="chip good">21h: 41</span> <span class="chip good">22h: 26</span> <span class="chip good">23h: 12</span></div>
+      <div class="scroll"><table><thead><tr><th class="l">Dia</th><th>Link do vendedor</th><th>Grupo</th><th>Site / blindado</th><th>Webinário</th><th>Anne IA</th><th>CS</th><th>Outros</th><th>Vendas novas</th><th>Parcelas</th></tr></thead><tbody><tr><td class="l">28/09 · seg <span class="chip good">live</span></td><td class="num">79 · 65.260</td><td class="num"><span class="zero">—</span></td><td class="num"><span class="zero">—</span></td><td class="num"><span class="zero">—</span></td><td class="num"><span class="zero">—</span></td><td class="num"><span class="zero">—</span></td><td class="num"><span class="zero">—</span></td><td class="num"><b>79 · 65.260</b></td><td class="num">0 · 0</td></tr><tr><td class="l">29/09 · ter</td><td class="num">36 · 22.117</td><td class="num"><span class="zero">—</span></td><td class="num"><span class="zero">—</span></td><td class="num"><span class="zero">—</span></td><td class="num"><span class="zero">—</span></td><td class="num"><span class="zero">—</span></td><td class="num">8 · 7.872</td><td class="num"><b>44 · 29.989</b></td><td class="num">0 · 0</td></tr><tr><td class="l">30/09 · qua</td><td class="num">26 · 15.131</td><td class="num"><span class="zero">—</span></td><td class="num"><span class="zero">—</span></td><td class="num"><span class="zero">—</span></td><td class="num"><span class="zero">—</span></td><td class="num">1 · 835</td><td class="num">14 · 12.687</td><td class="num"><b>41 · 28.653</b></td><td class="num">0 · 0</td></tr><tr><td class="l">01/10 · qui</td><td class="num">5 · 3.996</td><td class="num"><span class="zero">—</span></td><td class="num"><span class="zero">—</span></td><td class="num"><span class="zero">—</span></td><td class="num"><span class="zero">—</span></td><td class="num"><span class="zero">—</span></td><td class="num">1 · 999</td><td class="num"><b>6 · 4.995</b></td><td class="num">0 · 0</td></tr><tr><td class="l">02/10 · sex</td><td class="num">1 · 977</td><td class="num"><span class="zero">—</span></td><td class="num"><span class="zero">—</span></td><td class="num"><span class="zero">—</span></td><td class="num"><span class="zero">—</span></td><td class="num"><span class="zero">—</span></td><td class="num"><span class="zero">—</span></td><td class="num"><b>1 · 977</b></td><td class="num">0 · 0</td></tr></tbody></table></div>
+      <p class="lede">Carrinho aberto na própria live de 28/09 (decisão da Anne). Live com ~20% de comparecimento ao vivo, o maior que ela lembra (antes nunca passou de 10%). Oferta: R$ 997 à vista ou 12× R$ 99,70.</p>
+    </div>
+    <div class="chartbox"><div class="chart-t">PRF — live 29/09, carrinho 30/09 <span class="chip good">carrinho aberto</span></div>
+    <div class="costs">
+      <div><div class="c-lbl">Live · 29/09</div><div class="c-val">8 vendas</div><div class="c-sub">R$ 8.629 no dia da live</div></div>
+      <div><div class="c-lbl">Carrinho · 30/09</div><div class="c-val" style="color:var(--teal)">13 vendas novas</div><div class="c-sub">R$ 12.824,23 líq. no dia da abertura</div></div>
+      <div><div class="c-lbl">Disparo da abertura</div><div class="c-val">247 msgs</div><div class="c-sub">PÓS DIREITO POLICIAL · AGORA15 · alunos Elite PR às 16:03–16:11</div></div>
+      <div><div class="c-lbl">1ª venda do carrinho</div><div class="c-val">05h</div><div class="c-sub">2 até as 10h</div></div>
+      <div><div class="c-lbl">Depois da abertura</div><div class="c-val">1 vendas</div><div class="c-sub">R$ 190 · até 30/09</div></div>
+      <div><div class="c-lbl">Desde a live</div><div class="c-val" style="color:var(--teal)">R$ 21.644</div><div class="c-sub">22 vendas novas · mais 67 parcelas (R$ 12.919)</div></div>
+      <div><div class="c-lbl">Base no grupo</div><div class="c-val">283 pessoas</div><div class="c-sub">4 grupos · SendFlow 20/09 23:18 · 753 rastreados ativos</div></div>
+      <div><div class="c-lbl">Conversão do grupo</div><div class="c-val" style="color:var(--teal)">7,8%</div><div class="c-sub">22 vendas novas ÷ 283 · dia do carrinho 4,6%</div></div>
+    </div>
+      <div class="chart-legend" style="margin-top:10px"><span>Vendas novas no dia do carrinho, por hora:</span> <span class="chip warn">05h: 1</span> <span class="chip warn">07h: 1</span> <span class="chip warn">12h: 1</span> <span class="chip warn">14h: 1</span> <span class="chip warn">16h: 2</span> <span class="chip warn">18h: 1</span> <span class="chip warn">20h: 2</span> <span class="chip warn">21h: 1</span> <span class="chip warn">22h: 1</span> <span class="chip warn">23h: 2</span></div>
+      <div class="scroll"><table><thead><tr><th class="l">Dia</th><th>Link do vendedor</th><th>Grupo</th><th>Site / blindado</th><th>Webinário</th><th>Anne IA</th><th>CS</th><th>Outros</th><th>Vendas novas</th><th>Parcelas</th></tr></thead><tbody><tr><td class="l">28/09 · seg</td><td class="num"><span class="zero">—</span></td><td class="num"><span class="zero">—</span></td><td class="num"><span class="zero">—</span></td><td class="num"><span class="zero">—</span></td><td class="num"><span class="zero">—</span></td><td class="num"><span class="zero">—</span></td><td class="num">4 · 3.995</td><td class="num"><b>4 · 3.995</b></td><td class="num">8 · 1.632</td></tr><tr><td class="l">29/09 · ter <span class="chip good">live</span></td><td class="num">5 · 5.031</td><td class="num"><span class="zero">—</span></td><td class="num"><span class="zero">—</span></td><td class="num"><span class="zero">—</span></td><td class="num">1 · 1.601</td><td class="num"><span class="zero">—</span></td><td class="num">2 · 1.997</td><td class="num"><b>8 · 8.629</b></td><td class="num">33 · 6.615</td></tr><tr><td class="l">30/09 · qua <span class="chip good">carrinho</span></td><td class="num">6 · 6.823</td><td class="num"><span class="zero">—</span></td><td class="num"><span class="zero">—</span></td><td class="num"><span class="zero">—</span></td><td class="num"><span class="zero">—</span></td><td class="num">2 · 1.189</td><td class="num">5 · 4.812</td><td class="num"><b>13 · 12.824</b></td><td class="num">15 · 2.401</td></tr><tr><td class="l">01/10 · qui</td><td class="num"><span class="zero">—</span></td><td class="num"><span class="zero">—</span></td><td class="num"><span class="zero">—</span></td><td class="num"><span class="zero">—</span></td><td class="num"><span class="zero">—</span></td><td class="num">1 · 190</td><td class="num"><span class="zero">—</span></td><td class="num"><b>1 · 190</b></td><td class="num">10 · 2.193</td></tr><tr><td class="l">02/10 · sex</td><td class="num"><span class="zero">—</span></td><td class="num"><span class="zero">—</span></td><td class="num"><span class="zero">—</span></td><td class="num"><span class="zero">—</span></td><td class="num"><span class="zero">—</span></td><td class="num"><span class="zero">—</span></td><td class="num"><span class="zero">—</span></td><td class="num"><b>0 · 0</b></td><td class="num">9 · 1.710</td></tr></tbody></table></div>
+    </div>
+    <p class="lede">Cada corte é lido pelo que vendeu de novo desde a live, não pelo canal do clique: o aluno vem do webinário e do Estude Comigo, mas fecha pelo vendedor.</p>
+  </section>
+
+  <section class="channel">
+    <div class="ch-head">
+      <h2>Investimento e faturamento por dia</h2>
+      <div class="desc">O que entrou de verba e o que a empresa faturou no mesmo dia, líquido.</div>
+      <div class="tot">investido <b>R$ 98.073,79</b> · faturado <b>R$ 518.463,90</b> · <b>5,29×</b></div>
+    </div>
+    <div class="scroll">
+      <table>
+        <thead><tr><th class="l">Dia</th><th>Meta</th><th>Imposto</th><th>Disparo</th><th>Investido</th><th>Faturamento líq.</th><th>Meta do dia</th><th>Defasagem</th></tr></thead>
+        <tbody>
+          <tr><td class="l">Ter, 01/09</td><td class="num">507,84</td><td class="num">70,23</td><td class="num">6,02</td><td class="num">584,09</td><td class="num">15.189,72</td><td class="num">29.411,76</td><td class="num roas-bad">−14.222,04</td></tr>
+          <tr><td class="l">Qua, 02/09</td><td class="num">595,58</td><td class="num">82,37</td><td class="num">421,40</td><td class="num">1.099,35</td><td class="num">9.740,30</td><td class="num">29.411,76</td><td class="num roas-bad">−19.671,46</td></tr>
+          <tr><td class="l">Qui, 03/09</td><td class="num">636,71</td><td class="num">88,06</td><td class="num">222,74</td><td class="num">947,51</td><td class="num">8.442,68</td><td class="num">29.411,76</td><td class="num roas-bad">−20.969,08</td></tr>
+          <tr><td class="l">Sex, 04/09</td><td class="num">1.132,64</td><td class="num">156,64</td><td class="num">6,88</td><td class="num">1.296,16</td><td class="num">7.571,04</td><td class="num">29.411,76</td><td class="num roas-bad">−21.840,72</td></tr>
+          <tr><td class="l">Sáb, 05/09</td><td class="num">1.202,05</td><td class="num">166,24</td><td class="num">21,50</td><td class="num">1.389,79</td><td class="num">8.258,68</td><td class="num">14.705,88</td><td class="num roas-bad">−6.447,20</td></tr>
+          <tr><td class="l">Dom, 06/09</td><td class="num">2.015,83</td><td class="num">278,79</td><td class="num">2.345,65</td><td class="num">4.640,27</td><td class="num">6.941,74</td><td class="num">14.705,88</td><td class="num roas-bad">−7.764,14</td></tr>
+          <tr><td class="l">Seg, 07/09 · feriado</td><td class="num">1.477,74</td><td class="num">204,37</td><td class="num">8,60</td><td class="num">1.690,71</td><td class="num">5.597,63</td><td class="num">14.705,88</td><td class="num roas-bad">−9.108,25</td></tr>
+          <tr><td class="l">Ter, 08/09</td><td class="num">1.594,04</td><td class="num">220,46</td><td class="num">10,32</td><td class="num">1.824,82</td><td class="num">19.561,10</td><td class="num">29.411,76</td><td class="num roas-bad">−9.850,66</td></tr>
+          <tr><td class="l">Qua, 09/09</td><td class="num">1.446,93</td><td class="num">200,11</td><td class="num">10,75</td><td class="num">1.657,79</td><td class="num">25.804,57</td><td class="num">29.411,76</td><td class="num roas-bad">−3.607,19</td></tr>
+          <tr><td class="l">Qui, 10/09</td><td class="num">1.785,51</td><td class="num">246,94</td><td class="num">9,46</td><td class="num">2.041,91</td><td class="num">9.767,40</td><td class="num">29.411,76</td><td class="num roas-bad">−19.644,36</td></tr>
+          <tr><td class="l">Sex, 11/09</td><td class="num">2.448,43</td><td class="num">338,62</td><td class="num">10,32</td><td class="num">2.797,37</td><td class="num">7.998,14</td><td class="num">29.411,76</td><td class="num roas-bad">−21.413,62</td></tr>
+          <tr><td class="l">Sáb, 12/09</td><td class="num">2.494,47</td><td class="num">344,99</td><td class="num">3,87</td><td class="num">2.843,33</td><td class="num">10.515,64</td><td class="num">14.705,88</td><td class="num roas-bad">−4.190,24</td></tr>
+          <tr><td class="l">Dom, 13/09</td><td class="num">2.426,23</td><td class="num">335,55</td><td class="num">7,74</td><td class="num">2.769,52</td><td class="num">9.647,16</td><td class="num">14.705,88</td><td class="num roas-bad">−5.058,72</td></tr>
+          <tr><td class="l">Seg, 14/09</td><td class="num">2.259,97</td><td class="num">312,55</td><td class="num">1.395,78</td><td class="num">3.968,30</td><td class="num">19.743,69</td><td class="num">29.411,76</td><td class="num roas-bad">−9.668,07</td></tr>
+          <tr><td class="l">Ter, 15/09</td><td class="num">2.888,48</td><td class="num">399,48</td><td class="num">2.075,61</td><td class="num">5.363,57</td><td class="num">12.108,56</td><td class="num">29.411,76</td><td class="num roas-bad">−17.303,20</td></tr>
+          <tr><td class="l">Qua, 16/09</td><td class="num">3.448,71</td><td class="num">476,96</td><td class="num">2.090,66</td><td class="num">6.016,33</td><td class="num">13.346,62</td><td class="num">29.411,76</td><td class="num roas-bad">−16.065,14</td></tr>
+          <tr><td class="l">Qui, 17/09</td><td class="num">3.061,80</td><td class="num">423,45</td><td class="num">1.626,26</td><td class="num">5.111,51</td><td class="num">10.983,30</td><td class="num">29.411,76</td><td class="num roas-bad">−18.428,46</td></tr>
+          <tr><td class="l">Sex, 18/09</td><td class="num">3.559,12</td><td class="num">492,23</td><td class="num">774,43</td><td class="num">4.825,78</td><td class="num">12.295,17</td><td class="num">29.411,76</td><td class="num roas-bad">−17.116,59</td></tr>
+          <tr><td class="l">Sáb, 19/09</td><td class="num">3.922,41</td><td class="num">542,47</td><td class="num">5,16</td><td class="num">4.470,04</td><td class="num">7.923,81</td><td class="num">14.705,88</td><td class="num roas-bad">−6.782,07</td></tr>
+          <tr><td class="l">Dom, 20/09</td><td class="num">4.335,08</td><td class="num">599,54</td><td class="num">7,31</td><td class="num">4.941,93</td><td class="num">2.963,97</td><td class="num">14.705,88</td><td class="num roas-bad">−11.741,91</td></tr>
+          <tr><td class="l">Seg, 21/09</td><td class="num">4.559,27</td><td class="num">630,55</td><td class="num">346,58</td><td class="num">5.536,40</td><td class="num">13.323,42</td><td class="num">29.411,76</td><td class="num roas-bad">−16.088,34</td></tr>
+          <tr><td class="l">Ter, 22/09</td><td class="num">2.991,45</td><td class="num">413,72</td><td class="num">2.048,09</td><td class="num">5.453,26</td><td class="num">30.232,52</td><td class="num">29.411,76</td><td class="num roas-good">+820,76</td></tr>
+          <tr><td class="l">Qua, 23/09</td><td class="num">2.495,52</td><td class="num">345,13</td><td class="num">465,69</td><td class="num">3.306,34</td><td class="num">19.080,53</td><td class="num">29.411,76</td><td class="num roas-bad">−10.331,23</td></tr>
+          <tr><td class="l">Qui, 24/09</td><td class="num">2.066,29</td><td class="num">285,77</td><td class="num">28,81</td><td class="num">2.380,87</td><td class="num">9.685,73</td><td class="num">29.411,76</td><td class="num roas-bad">−19.726,03</td></tr>
+          <tr><td class="l">Sex, 25/09</td><td class="num">2.450,62</td><td class="num">338,92</td><td class="num">1.164,87</td><td class="num">3.954,41</td><td class="num">7.416,26</td><td class="num">29.411,76</td><td class="num roas-bad">−21.995,50</td></tr>
+          <tr><td class="l">Sáb, 26/09</td><td class="num">2.643,08</td><td class="num">365,54</td><td class="num">635,97</td><td class="num">3.644,59</td><td class="num">9.194,85</td><td class="num">14.705,88</td><td class="num roas-bad">−5.511,03</td></tr>
+          <tr><td class="l">Dom, 27/09</td><td class="num">2.847,24</td><td class="num">393,77</td><td class="num">912,46</td><td class="num">4.153,47</td><td class="num">11.198,87</td><td class="num">14.705,88</td><td class="num roas-bad">−3.507,01</td></tr>
+          <tr><td class="l">Seg, 28/09</td><td class="num">2.411,71</td><td class="num">333,54</td><td class="num">1.107,25</td><td class="num">3.852,50</td><td class="num">79.748,11</td><td class="num">29.411,76</td><td class="num roas-good">+50.336,35</td></tr>
+          <tr><td class="l">Ter, 29/09</td><td class="num">1.624,62</td><td class="num">224,68</td><td class="num">515,57</td><td class="num">2.364,87</td><td class="num">55.733,71</td><td class="num">29.411,76</td><td class="num roas-good">+26.321,95</td></tr>
+          <tr><td class="l">Qua, 30/09</td><td class="num">1.206,04</td><td class="num">166,80</td><td class="num">1.774,18</td><td class="num">3.147,02</td><td class="num">58.448,98</td><td class="num">29.411,76</td><td class="num roas-good">+29.037,22</td></tr>
+          <tr class="total"><td class="l">Mês até aqui</td><td class="num">68.535,41</td><td class="num">9.478,45</td><td class="num">20.059,93</td><td class="num">98.073,79</td><td class="num">518.463,90</td><td class="num">750.000,00</td><td class="num roas-bad">−231.536,10</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="lede">O mês foi de dois tempos: até 27/09 nenhum dia útil bateu o alvo de R$ 29.411,76, exceto 22/09 (R$ 30.232,52, carrinho do TJ-AM). De 28 a 30/09 vieram R$ 79.748,11, R$ 55.733,71 e R$ 58.448,98 — os três melhores dias de setembro. O pior foi o domingo 20/09, com R$ 2.963,97.</p>
+  </section>
+
+  <section class="channel">
+    <div class="ch-head">
+      <h2>Receita por frente — todas as origens</h2>
+      <div class="desc">Agrupado pelo produto da fatura. Inclui orgânico, base e time comercial — <b>não</b> é retorno de tráfego.</div>
+      <div class="tot">R$ 518.463,90 · <b>1298 vendas</b></div>
+    </div>
+    <div class="scroll">
+      <table>
+        <thead><tr><th class="l">Frente</th><th>Vendas</th><th>Líquido no mês</th><th>% do mês</th></tr></thead>
+        <tbody>
+          <tr><td class="l">TJ-AM</td><td class="num">278</td><td class="num">140.230,43</td><td class="num">27,0%</td></tr>
+          <tr><td class="l">Polícia Civil AM</td><td class="num">168</td><td class="num">126.060,73</td><td class="num">24,3%</td></tr>
+          <tr><td class="l">PRF</td><td class="num">359</td><td class="num">102.152,06</td><td class="num">19,7%</td></tr>
+          <tr><td class="l">SEDUC (AM e PA)</td><td class="num">112</td><td class="num">51.855,87</td><td class="num">10,0%</td></tr>
+          <tr><td class="l">Outros</td><td class="num">187</td><td class="num">40.608,32</td><td class="num">7,8%</td></tr>
+          <tr><td class="l">MANAUSPREV</td><td class="num">42</td><td class="num">31.471,40</td><td class="num">6,1%</td></tr>
+          <tr><td class="l">SEMSA</td><td class="num">52</td><td class="num">16.959,40</td><td class="num">3,3%</td></tr>
+          <tr><td class="l">Play Passei</td><td class="num">100</td><td class="num">9.125,69</td><td class="num">1,8%</td></tr>
+          <tr class="total"><td class="l">Total</td><td class="num">1298</td><td class="num">518.463,90</td><td class="num">100%</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="lede">Por produto, o <b>TJ-AM</b> fecha setembro na frente com R$ 140.230,43 em 278 vendas, seguido de <b>Polícia Civil AM</b> (R$ 126.060,73 em 168) e <b>PRF</b> (R$ 102.152,06 em 359, com muita parcela). SEDUC AM e PA somam R$ 51.855,87, ManausPrev R$ 31.471,40, SEMSA R$ 16.959,40 e Play Passei R$ 9.125,69; outros produtos, R$ 40.608,32.</p>
+  </section>
+
+  <section class="notes">
+    <h2>Como cada número é apurado</h2>
+    <p>Tudo sai direto dos bancos, sem planilha no meio. Datas e horários em Brasília. Esta página se reconstrói sozinha de hora em hora, das 6h às 22h.</p>
+    <h3>O que ler hoje</h3>
+    <ul>
+      <li>Setembro (prévia até 07/10): <b>R$ 518.463,90</b> líquidos em 1.298 vendas, 69,1% da meta de R$ 750 mil; reembolsos da garantia ainda não mexeram no total.</li>
+      <li>Melhor dia do mês foi 28/09, com R$ 79.748,11 em 130 vendas; 29 e 30/09 somaram mais R$ 55.733,71 e R$ 58.448,98, todos puxados pelos cortes das lives.</li>
+      <li>Polícias AM: 79 vendas e R$ 65.259,63 só na noite da live (21h às 23h) e 171 vendas / R$ 129.872,54 até agora — conversão de 18,53% sobre o grupo; o carrinho ainda pinga em outubro.</li>
+      <li>Blindado é a frente mais eficiente (ROAS 5,36, CAC R$ 181,96); Webinários rendem 1,35 com CAC de R$ 651,24; Play Passei fecha em 0,42.</li>
+      <li>Teto de tráfego praticamente esgotado: R$ 98.073,79 de R$ 100 mil, sendo R$ 9.478,45 de imposto sobre a mídia e R$ 20.059,93 de disparo.</li>
+      <li>Carrinhos abandonados: a Anne abordou 425 dos 437, 239 responderam, mas só <b>1</b> tem follow-up agendado (649 cancelados).</li>
+    </ul>
+    <h3>Como as frentes são medidas</h3>
+    <ul>
+      <li><b>Blindado</b> = campanhas <code>[PLANO][BLINDADO]</code> e <code>[PERPETUO]</code> mais o disparo BLINDADO. Retorno = faturas com <code>utm_source='site'</code>. Janela de julgamento de <b>7 dias</b> — os follow-ups da Anne fazem a venda sair depois.</li>
+      <li><b>Webinários</b> = campanhas <code>[WEB]</code> mais o disparo de webinário. Retorno = as faturas do produto de cada funil vindas pela porta do webinário. O funil em si é medido pelo cruzamento de quem clicou no checkout com as faturas pagas, por telefone e e-mail.</li>
+      <li><b>Play Passei</b> = conta SPOTFABIO. Retorno = vendas do produto com origem paga, excluindo bio, orgânico e o que carrega código de vendedor. O líquido já vem depois da coprodução 50/50 com a Sola Fide.</li>
+      <li><b>PRF</b> = campanhas do ingresso de R$ 19,90. O que julga a campanha é o <b>CPA por ingresso</b> contra o gate de R$ 75; o Elite é vendido dentro do webinário.</li>
+      <li><b>Imposto</b>: a mídia do Meta paga 13,83% de imposto, somado ao custo de cada frente e ao total (o disparo, em dólar, já traz as tarifas dentro dos R$ 0,43). O teto do mês, R$ 100 mil, já inclui o imposto.</li>
+      <li><b>Aquecimento</b> = campanhas <code>[PLANO][FASE1]</code> (atração), <code>[FASE2]</code> (consciência e corredor), <code>[FASE3]</code> (captação Estude Comigo) e lembretes de live. Entram no custo e no teto, mas não têm venda atribuída: o retorno delas aparece nos cortes das lives.</li>
+      <li>Nenhuma venda é contada em duas frentes. Mas nenhuma atribuição é exclusiva — o mesmo lead pode ter recebido disparo e visto anúncio.</li>
+    </ul>
+    <h3>Composição da venda</h3>
+    <ul>
+      <li>Cada fatura paga cai em <b>uma única</b> categoria, então as colunas somam exatamente o faturamento do dia. <b>Nova</b> = valor cheio ou 1ª parcela; <b>parcela</b> = da 2ª em diante.</li>
+      <li><b>Time comercial e CS saem primeiro</b>, pelo código do vendedor em <code>utm_term</code> — inclusive as parcelas. Por isso a coluna de recorrência é só a parcela <b>sem dono identificado</b>: R$ 24.626,72 dos R$ 109.306,95 de parcela do mês.</li>
+      <li>A parcela vem do <code>webhook_inbox</code> (campo <code>smartInstallment</code>) porque a flag do banco está quebrada.</li>
+      <li><b>O termo <code>mkt</code> não é canal</b> — é só o marketing como dono do link. Quem decide a categoria é sempre o <code>utm_source</code>.</li>
+      <li>Esta tabela mede <b>origem da venda</b>, não retorno de campanha — não bate com a tabela de frentes, que só soma o atribuível a mídia e disparo.</li>
+    </ul>
+    <h3>Fuso horário</h3>
+    <ul>
+      <li>Todos os horários e a virada do dia seguem <b>Brasília</b>. <b>Manaus fica 1 hora atrás</b> — o carimbo do topo mostra os dois.</li>
+      <li>Uma venda feita às <b>23h30 de Manaus</b> entra no dia seguinte, porque em Brasília já são 00h30.</li>
+    </ul>
+    <h3>Meta de R$ 750 mil</h3>
+    <ul>
+      <li>Meta: <b>R$ 750 mil líquidos + a conta Hubla Matriz</b>, que é de outro CNPJ, não passa pelo Data Core e entra à mão no fechamento.</li>
+      <li>Dias úteis com peso 1 e fins de semana e feriados com meia meta → R$ 29.411,76 por dia útil.</li>
+      <li>“Projeção no ritmo atual” usa só os dias fechados e <b>não</b> inclui os cortes do fim do mês.</li>
+    </ul>
+    <div class="rule"></div>
+    <h3>O que esta página não faz sozinha</h3>
+    <p>Os números, as tabelas e os gráficos se atualizam de hora em hora e a análise é reescrita a cada rodada. O <b>calendário</b> e as <b>pendências</b> são contexto humano: ficam num arquivo à parte e só mudam quando alguém edita. Se algo aqui parecer desatualizado em relação à realidade, é esse arquivo que precisa de revisão — a última foi em 28/09/2026.</p>
+  </section>
+
+  <footer>Grupo SOU · Data Core + Anne IA · atualizado automaticamente em 02/10 · 12h08 Brasília / 11h08 Manaus</footer>
+</div>
+</body>
+</html>
