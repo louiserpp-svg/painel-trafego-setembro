@@ -1,0 +1,24 @@
+{
+ "2026-09": {
+  "rotulo": "Setembro 2026",
+  "fat": 518531,
+  "vendas": 1297,
+  "investido": 98074,
+  "roas": 1.33,
+  "regua": "régua do painel de setembro (sem o vendedor; aquecimento no custo)",
+  "meta": 750000,
+  "situacao": "prévia",
+  "ate": "30/09 (régua Hubla: data de pagamento, fuso de Manaus)"
+ },
+ "2026-10": {
+  "rotulo": "Outubro 2026",
+  "fat": 130010,
+  "vendas": 384,
+  "investido": 19012,
+  "roas": 4.01,
+  "regua": "funil completo",
+  "meta": 366295,
+  "situacao": "em curso",
+  "ate": "10/10"
+ }
+}
