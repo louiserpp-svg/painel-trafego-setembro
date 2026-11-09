@@ -20,5 +20,16 @@
   "meta": 366295,
   "situacao": "fechado",
   "ate": "31/10"
+ },
+ "2026-11": {
+  "rotulo": "Novembro 2026",
+  "fat": 58903,
+  "vendas": 228,
+  "investido": 67261,
+  "roas": 0.48,
+  "regua": "vendas novas ÷ tráfego do mês, com a Black",
+  "meta": 1000000,
+  "situacao": "em curso",
+  "ate": "09/11"
  }
 }
