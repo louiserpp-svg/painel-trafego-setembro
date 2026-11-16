@@ -23,13 +23,13 @@
  },
  "2026-11": {
   "rotulo": "Novembro 2026",
-  "fat": 207880,
-  "vendas": 474,
-  "investido": 80821,
-  "roas": 2.01,
+  "fat": 209631,
+  "vendas": 477,
+  "investido": 80823,
+  "roas": 2.02,
   "regua": "vendas novas ÷ tráfego do mês, com a Black",
   "meta": 1000000,
   "situacao": "em curso",
-  "ate": "15/11"
+  "ate": "16/11"
  }
 }
